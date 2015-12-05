@@ -1,6 +1,8 @@
 修改编码为utf-8
 修改编码为utf-8 无BOM格式
 
+用来测试git提交记录乱码问题
+
 2.2.3 系统管理	sys模块
 2.2.4.1 用户管理	用户表user    user-role
 2.2.4.1 角色管理	角色表role    role-menu

@@ -1,0 +1,49 @@
+一、用户表设计
+	create table user(
+	
+		#-------基本字段---------
+		Id varchar(100) primary key,#用户id
+		account varchar(30) unique,#用户帐号
+		password varchar(100),#用户密码
+		username varchar(30),#用户姓名
+		gender varchar(20),#用户性别
+		birthday date,#用户出生日期
+		telephone varchar(20),#家庭号码
+		mobilephone varchar(20),#手机号
+		email varchar(30),#邮箱
+		address varchar(255),#地址
+		isDuty varchar(30),#是否在职
+		units varchar(30),#所属单位
+		onDutyDate date,#入职时间
+		offDutyDate date,#离职时间
+		comment text,#备注
+		
+		#----------维护字段-------------
+		createUser varchar(100),#创建者id
+		createDate date,#创建日期
+		lastModifyUser varchar(100),#最后修改人id
+		lastModifyDate date,#最后修改日期
+	
+		#----------假删除 数据是核心-----------------
+		isDelete boolean#是否被删除
+	);
+
+二、用户模块框架搭建
+	1、创建体系类
+		model:    OAUser 
+		dao:      IOAUserDao OAUerDaoImpl 
+		service:  OAUserService 
+		action :  OAUserAction 
+	2、创建配置文件体系
+		hibernate:   OAUser.hbm.xml hibernate.cfg.xml
+		struts:　　　struts-sys.xml(系统包下用户模块) struts-xml
+		spring:      spring-dao.xml  spring-service.xml spring-action.xml
+		
+三、用户添加功能
+	1、用户名ajax唯一性校验
+	2、客户端校验  jquery validate插件 等
+	3、服务端校验  使用struts2校验 使用方法手动校验/配置文件校验
+		配置文件校验更加灵活  针对方法校验  action类名-action名字-validation.xml
+		
+四、用户分页查询
+	1、jquery DataTables 分页插件

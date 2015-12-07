@@ -8,31 +8,31 @@ import java.util.List;
 
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
-import com.nsn.oa.dao.BaseDao;
+import com.nsn.oa.dao.IBaseDao;
 import com.nsn.oa.dao.utils.Conditions;
 import com.nsn.oa.dao.utils.Conditions.WhereAndValues;
 
 /**
- * BaseDaoµÄÊµÏÖÀà Ìá¹©»ù´¡·½·¨
+ * BaseDaoçš„å®ç°ç±» æä¾›åŸºç¡€æ–¹æ³•
  * 
  * @author Administrator
  * 
  * @param <T>
  */
-public class BaseDaoImpl<T> implements BaseDao<T> {
+public class BaseDaoImpl<T> implements IBaseDao<T> {
 
 	/**
-	 * ³ÖÓĞ²Ù×÷hibernateµÄÄ£°å
+	 * æŒæœ‰æ“ä½œhibernateçš„æ¨¡æ¿
 	 */
 	private HibernateTemplate template;
 
 	private Class<T> beanClass;
 
 	/**
-	 * ´úÂë¿é ´´½¨ÊµÀıÊ±Ö´ĞĞ
+	 * ä»£ç å— åˆ›å»ºå®ä¾‹æ—¶æ‰§è¡Œ
 	 */
 	{
-		// »ñÈ¡²ÎÊı»¯ÀàĞÍ
+		// è·å–å‚æ•°åŒ–ç±»å‹
 		ParameterizedType paramType = (ParameterizedType) this.getClass()
 				.getGenericSuperclass();
 		Type[] argTypes = paramType.getActualTypeArguments();
@@ -47,7 +47,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		this.template = template;
 	}
 
-	// ================Ìí¼Ó/¸üĞÂ·½·¨======================
+	// ================æ·»åŠ /æ›´æ–°æ–¹æ³•======================
 	@Override
 	public void addOrUpdate(T bean) {
 		template.saveOrUpdate(bean);
@@ -58,28 +58,28 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		template.saveOrUpdateAll(beans);
 	}
 
-	// ================É¾³ı·½·¨======================
+	// ================åˆ é™¤æ–¹æ³•======================
 	@Override
 	public void delete(T bean) {
-		// ×¢Òâ´Ë·½·¨²»ÄÜÉ¾³ıÎª¿ÕµÄÔªËØ
-		// templateÌá¹©µÄÉ¾³ı·½·¨£¬Èô¸ø¶¨µÄbeanÎ´ÔÚsessionÖĞ£¬Ôò»áÏÈ¸ù¾İ¸ø¶¨µÄ
-		// bean id ²éÑ¯Êı¾İ¿âÈôÓĞµÃµ½³Ö¾Ã»¯¶ÔÏó£¬Ã»ÓĞÔòÎªnull
-		// Òò´ËdeleteById Í¨¹ı idµÃµ½³Ö¾Ã»¯bean£¬¼´¿ÉÖ±½ÓÉ¾³ı£¬²»ĞèÔÙ´Î²éÕÒ
+		// æ³¨æ„æ­¤æ–¹æ³•ä¸èƒ½åˆ é™¤ä¸ºç©ºçš„å…ƒç´ 
+		// templateæä¾›çš„åˆ é™¤æ–¹æ³•ï¼Œè‹¥ç»™å®šçš„beanæœªåœ¨sessionä¸­ï¼Œåˆ™ä¼šå…ˆæ ¹æ®ç»™å®šçš„
+		// bean id æŸ¥è¯¢æ•°æ®åº“è‹¥æœ‰å¾—åˆ°æŒä¹…åŒ–å¯¹è±¡ï¼Œæ²¡æœ‰åˆ™ä¸ºnull
+		// å› æ­¤deleteById é€šè¿‡ idå¾—åˆ°æŒä¹…åŒ–beanï¼Œå³å¯ç›´æ¥åˆ é™¤ï¼Œä¸éœ€å†æ¬¡æŸ¥æ‰¾
 		template.delete(bean);
 	}
 
 	@Override
 	public void deleteAll(Collection<T> beans) {
-		// ×¢Òâ´Ë·½·¨²»ÄÜÉ¾³ıÎª¿ÕµÄÔªËØ
+		// æ³¨æ„æ­¤æ–¹æ³•ä¸èƒ½åˆ é™¤ä¸ºç©ºçš„å…ƒç´ 
 		template.deleteAll(beans);
 	}
 
 	@Override
 	public void deleteById(Serializable id) {
-		// »ñÈ¡id¶ÔÓ¦bean
+		// è·å–idå¯¹åº”bean
 		T bean = findById(id);
-		// µ÷ÓÃÉ¾³ı
-		// ºÏ·¨ĞÔĞ£Ñé
+		// è°ƒç”¨åˆ é™¤
+		// åˆæ³•æ€§æ ¡éªŒ
 		if (bean != null) {
 			delete(bean);
 		}
@@ -87,7 +87,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
 	@Override
 	public void deleteByIds(Serializable... ids) {
-		// ºÏ·¨ĞÔĞ£Ñé
+		// åˆæ³•æ€§æ ¡éªŒ
 		if (ids != null) {
 			for (Serializable id : ids) {
 				deleteById(id);
@@ -95,7 +95,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		}
 	}
 
-	// ================²éÑ¯·½·¨======================
+	// ================æŸ¥è¯¢æ–¹æ³•======================
 	@Override
 	public T findById(Serializable id) {
 		return (T) template.get(beanClass, id);
@@ -103,7 +103,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
 	@Override
 	public List<T> findByConditions(Conditions conditions) {
-		// WhereAndValues¶ÔÏó
+		// WhereAndValueså¯¹è±¡
 		WhereAndValues whereAndValues = conditions.createWhereAndValues();
 		String hql = "from " + beanClass.getName() + whereAndValues.getWhere()
 				+ conditions.createOrderByString();

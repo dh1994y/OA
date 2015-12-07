@@ -15,15 +15,12 @@
              http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
       
 	  <!-- 配置测试bean -->      
-      <bean name="elecText" class="elec.domain.ElecText">
-     	<property name="textName" value="testSpring"/>
-      </bean>
       
       <!-- 配置c3p0数据库连接池 -->
       <bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<!-- 基本配置 -->      	
       	<property name="driverClass" value="com.mysql.jdbc.Driver"/>
-      	<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/elec?useUnicode=true&amp;characterEncoding=utf8"/>
+      	<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/oa?useUnicode=true&amp;characterEncoding=utf8"/>
       	<property name="user" value="root"/>
       	<property name="password" value="root"/>
       	<!-- 扩展配置 -->
@@ -63,7 +60,7 @@
       
       <!-- 配置切入点：织入事务增强功能 -->
       <aop:config>
-      	<aop:pointcut id="transactionPointcut" expression="execution( * elec.service..*.*(..))"/>
+      	<aop:pointcut id="transactionPointcut" expression="execution( * com.nsn.oa.service..*.*(..))"/>
       	<aop:advisor advice-ref="transactionAdvice" pointcut-ref="transactionPointcut"/>
       </aop:config>
       
@@ -73,13 +70,13 @@
       </bean>
       
       <!-- 注册dao相关 -->
-      <import resource="config/beans-dao.xml"/>
+      <import resource="com/nsn/oa/config/beans-dao.xml"/>
       
       <!-- 注册service相关 -->
-      <import resource="config/beans-service.xml"/>
+      <import resource="com/nsn/oa/config/beans-service.xml"/>
       
       <!-- 注册action相关 -->
-      <import resource="config/beans-action.xml"/>
+      <import resource="com/nsn/oa/config/beans-action.xml"/>
       
 </beans>
              

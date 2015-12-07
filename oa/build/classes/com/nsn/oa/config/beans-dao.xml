@@ -14,14 +14,10 @@
              http://www.springframework.org/schema/aop 
              http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
       <!-- dao相关bean -->
-        
-      <!-- 此处初始化错误 具体记录在设计流程中
-	  <bean name="baseDao" class="elec.dao.impl.BaseDaoImpl">
+      <bean name="baseDao" class="com.nsn.oa.dao.impl.BaseDaoImpl" abstract="true">
       	<property name="template" ref="hibernateTemplate"/>
-      </bean>
- 		-->
-      <bean name="textDao" class="elec.dao.impl.ElecTextDaoImpl">
-      	<property name="template" ref="hibernateTemplate"/>
-      </bean>     
+      </bean>  
+      
+      <bean name="menuDao" class="com.nsn.oa.dao.impl.MenuDaoImpl" parent="baseDao"/>
 </beans>
       

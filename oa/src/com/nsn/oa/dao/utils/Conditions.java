@@ -4,35 +4,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ²éÑ¯Ìõ¼ş
+ * æŸ¥è¯¢æ¡ä»¶
  * 
  * @author Administrator
  * 
  */
 public class Conditions {
 	/**
-	 * Ìõ¼şÁĞ±í
+	 * æ¡ä»¶åˆ—è¡¨
 	 */
 	private List<Condition> conditions = new ArrayList<Condition>();
 	/**
-	 * ÅÅĞò¹æÔòÁĞ±í
+	 * æ’åºè§„åˆ™åˆ—è¡¨
 	 */
 	private List<OrderBy> orderBies = new ArrayList<OrderBy>();
 
 	/**
-	 * Ìí¼ÓÅÅĞò¹æÔò
+	 * æ¸…ç©ºæ¡ä»¶
+	 */
+	public void clear(){
+		conditions.clear();
+		orderBies.clear();
+	}
+	
+	/**
+	 * æ·»åŠ æ’åºè§„åˆ™
 	 * 
-	 * ÑÏ¸ñ£º
+	 * ä¸¥æ ¼ï¼š
 	 * 
-	 * °²¾²£º
+	 * å®‰é™ï¼š
 	 * 
 	 * @param key
-	 *            ÅÅĞò×Ö¶Î
+	 *            æ’åºå­—æ®µ
 	 * @param isAsc
-	 *            ÊÇ·ñÉıĞò
+	 *            æ˜¯å¦å‡åº
 	 */
 	public void addOrderBy(String key, boolean isAsc) {
-		// ºÏ·¨ĞÔĞ£Ñé
+		// åˆæ³•æ€§æ ¡éªŒ
 		if (key == null || key.trim().length() == 0) {
 			return;
 		}
@@ -40,12 +48,12 @@ public class Conditions {
 	}
 
 	/**
-	 * ´´½¨ÅÅĞòÌõ¼ş×Ö·û´®
+	 * åˆ›å»ºæ’åºæ¡ä»¶å­—ç¬¦ä¸²
 	 * 
 	 * @return
 	 */
 	public String createOrderByString() {
-		// ÅÅĞòÌõ¼şÎª¿ÕÊ±£¬·µ»Ø¿Õ×Ö·û´®"";
+		// æ’åºæ¡ä»¶ä¸ºç©ºæ—¶ï¼Œè¿”å›ç©ºå­—ç¬¦ä¸²"";
 		if (orderBies.size() == 0) {
 			return "";
 		}
@@ -58,33 +66,33 @@ public class Conditions {
 	}
 
 	/**
-	 * Ìí¼ÓÌõ¼ş·½·¨ °²¾²£º³öÏÖ²»ºÏ·¨µÄÌõ¼ş£¬²»Óè±¨´í£¬½ö²»Ìí¼Ó×÷Îª²éÑ¯Ìõ¼ş
+	 * æ·»åŠ æ¡ä»¶æ–¹æ³• å®‰é™ï¼šå‡ºç°ä¸åˆæ³•çš„æ¡ä»¶ï¼Œä¸äºˆæŠ¥é”™ï¼Œä»…ä¸æ·»åŠ ä½œä¸ºæŸ¥è¯¢æ¡ä»¶
 	 * 
-	 * ÑÏ¸ñ£º²»ºÏ·¨µÄÌõ¼ş²»Ìí¼Ó Èç£ºkeyÎªnull µÈ
+	 * ä¸¥æ ¼ï¼šä¸åˆæ³•çš„æ¡ä»¶ä¸æ·»åŠ  å¦‚ï¼škeyä¸ºnull ç­‰
 	 * 
 	 * @param key
-	 *            ²éÑ¯×Ö¶ÎÃû
+	 *            æŸ¥è¯¢å­—æ®µå
 	 * @param value
-	 *            ²éÑ¯×Ö¶ÎÖµ
+	 *            æŸ¥è¯¢å­—æ®µå€¼
 	 * @param op
-	 *            ²éÑ¯²Ù×÷·û
+	 *            æŸ¥è¯¢æ“ä½œç¬¦
 	 */
 	public void addCondition(String key, Object value, Operator op) {
-		// keyºÏ·¨ĞÔĞ£Ñé
+		// keyåˆæ³•æ€§æ ¡éªŒ
 		if (key == null || key.trim().length() == 0) {
 			return;
 		}
-		// opºÏ·¨ĞÔĞ£Ñé
+		// opåˆæ³•æ€§æ ¡éªŒ
 		if (op == null) {
 			return;
 		}
-		// valueºÏ·¨ĞÔĞ£Ñé£º³ıÈ´is/not is ÍâÆäÓàvalue²»¿ÉÎªnull
+		// valueåˆæ³•æ€§æ ¡éªŒï¼šé™¤å´is/not is å¤–å…¶ä½™valueä¸å¯ä¸ºnull
 		if (value == null) {
 			if (op != Operator.IS && op != Operator.NOT_IS) {
 				return;
 			}
 		}
-		// ²»ÎªnullÊÇÅĞ¶ÏÊÇ·ñÊÇString ¿Õ´®
+		// ä¸ä¸ºnullæ˜¯åˆ¤æ–­æ˜¯å¦æ˜¯String ç©ºä¸²
 		if (value != null && value instanceof String) {
 			String v = (String) value;
 			if (v.trim().length() == 0) {
@@ -95,16 +103,16 @@ public class Conditions {
 	}
 
 	/**
-	 * ¸ù¾İconditions´´½¨WhereAndValues¶ÔÏó
+	 * æ ¹æ®conditionsåˆ›å»ºWhereAndValueså¯¹è±¡
 	 * 
 	 * @return
 	 */
 	public WhereAndValues createWhereAndValues() {
-		// Ìõ¼şÎª¿ÕÊ±£¬Ö±½Ó·µ»Ønew WhereAndValues()
+		// æ¡ä»¶ä¸ºç©ºæ—¶ï¼Œç›´æ¥è¿”å›new WhereAndValues()
 		if (conditions.size() == 0) {
 			return new WhereAndValues();
 		}
-		// Ìõ¼ş²»Îª¿Õ£¬¿ªÊ¼Æ´½Ó
+		// æ¡ä»¶ä¸ä¸ºç©ºï¼Œå¼€å§‹æ‹¼æ¥
 		StringBuilder builder = new StringBuilder(" where ");
 		List<Object> list = new ArrayList<Object>();
 		for (Condition condition : conditions) {
@@ -114,7 +122,7 @@ public class Conditions {
 			Object value = condition.getValue();
 			// operator
 			Operator op = condition.getOp();
-			// switchÅĞ¶Ï
+			// switchåˆ¤æ–­
 			switch (op) {
 			case EQUALS:
 				builder.append(key).append(" = ? ");
@@ -178,7 +186,7 @@ public class Conditions {
 	}
 
 	/**
-	 * ÄÚ²¿Ã¶¾Ù Ã¶¾Ù²Ù×÷·û
+	 * å†…éƒ¨æšä¸¾ æšä¸¾æ“ä½œç¬¦
 	 * 
 	 * @author Administrator
 	 * 
@@ -188,15 +196,15 @@ public class Conditions {
 	}
 
 	/**
-	 * ÄÚ²¿Àà µ¥Ò»Ìõ¼ş ²»Ìá¹©Íâ½ç·ÃÎÊ
+	 * å†…éƒ¨ç±» å•ä¸€æ¡ä»¶ ä¸æä¾›å¤–ç•Œè®¿é—®
 	 * 
 	 * @author Administrator
 	 * 
 	 */
 	class Condition {
-		private String key;// ²éÑ¯×Ö¶ÎÃû
-		private Object value;// ²éÑ¯×Ö¶ÎÖµ
-		private Operator op;// ²éÑ¯¹ØÏµÔËËã·û
+		private String key;// æŸ¥è¯¢å­—æ®µå
+		private Object value;// æŸ¥è¯¢å­—æ®µå€¼
+		private Operator op;// æŸ¥è¯¢å…³ç³»è¿ç®—ç¬¦
 
 		public Condition() {
 		}
@@ -234,13 +242,13 @@ public class Conditions {
 	}
 
 	/**
-	 * ·â×° where×Ó¾äºÍvalueÊı×é ¶¨Òå³Épublic ¹©Íâ½çÊ¹ÓÃ
+	 * å°è£… whereå­å¥å’Œvalueæ•°ç»„ å®šä¹‰æˆpublic ä¾›å¤–ç•Œä½¿ç”¨
 	 * 
 	 * @author Administrator
 	 * 
 	 */
 	public class WhereAndValues {
-		// ÎªÁË±ÜÃâWhereAndValues¶ÔÏóÎª¿ÕÊ±£¬»ñµÃµÄwhereÎªnullÆ´½Ó³ö´í£¬³õÊ¼»¯Îª""
+		// ä¸ºäº†é¿å…WhereAndValueså¯¹è±¡ä¸ºç©ºæ—¶ï¼Œè·å¾—çš„whereä¸ºnullæ‹¼æ¥å‡ºé”™ï¼Œåˆå§‹åŒ–ä¸º""
 		private String where = "";
 		private Object[] values;
 
@@ -271,15 +279,15 @@ public class Conditions {
 	}
 
 	/**
-	 * ÅÅĞòÄÚ²¿Àà
+	 * æ’åºå†…éƒ¨ç±»
 	 * 
 	 * @author Administrator
 	 * 
 	 */
 	class OrderBy {
 
-		private String key;// ÅÅĞò×Ö¶Î
-		private boolean isAsc;// ÅÅĞò¹æÔò trueÉıĞòfalse½µĞò
+		private String key;// æ’åºå­—æ®µ
+		private boolean isAsc;// æ’åºè§„åˆ™ trueå‡åºfalseé™åº
 
 		public OrderBy() {
 		}

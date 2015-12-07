@@ -14,12 +14,10 @@
              http://www.springframework.org/schema/aop 
              http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
       <!-- action相关 -->
-        
-      <bean name="textAction" class="elec.web.action.ElecTextAction">
-      	<property name="textService" ref="textService"/>
-      </bean>
-      
-      <bean name="menuAction" class="elec.web.action.ElecMenuAction"/>
+      <bean name="menuAction" class="com.nsn.oa.web.action.MenuAction">
+      	<property name="menuService" ref="menuService"/>
+      </bean>  
+
       	
 </beans>
       

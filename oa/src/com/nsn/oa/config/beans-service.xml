@@ -14,9 +14,9 @@
              http://www.springframework.org/schema/aop 
              http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
       <!-- service相关 -->
-        
-      <bean name="textService" class="elec.service.ElecTextService">
-      	<property name="textDao" ref="textDao"/>
-      </bean> 
+      <bean name="menuService" class="com.nsn.oa.service.MenuService">
+      	<property name="menuDao" ref="menuDao"/>
+      </bean>
+
 </beans>
       

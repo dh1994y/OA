@@ -6,6 +6,7 @@ import java.util.List;
 public class FirstLevelMenu {
 
 	private String id;
+	private String homePage;
 	private List<SecondLevelMenu> menu = new ArrayList<SecondLevelMenu>();
 
 	public String getId() {
@@ -19,5 +20,11 @@ public class FirstLevelMenu {
 	}
 	public void setMenu(List<SecondLevelMenu> menu) {
 		this.menu = menu;
+	}
+	public String getHomePage() {
+		return homePage;
+	}
+	public void setHomePage(String homePage) {
+		this.homePage = homePage;
 	}
 }

@@ -48,6 +48,9 @@
       			}
       		}
       		//创建子菜单
+      		//主页显示
+      		//config[0].menu[0].items[0].closeable = false;
+      		//alert(JSON.stringify(config));
       		new PageUtil.MainPage({
       	        modulesConfig : config
       	      });

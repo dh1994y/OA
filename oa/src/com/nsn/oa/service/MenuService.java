@@ -63,6 +63,10 @@ public class MenuService {
 				for(FirstLevelMenu fm : fmList){
 					for(SecondLevelMenu sm : fm.getMenu()){
 						if(secondLevelMenuMap.get(sm).equals(menu.getParentId())){
+							//添加一级菜单主页
+							if(menu.getOrderValue() == 1){
+								fm.setHomePage(menu.getId());
+							}
 							ThirdLevelMenu tm = new ThirdLevelMenu();
 							tm.setId(menu.getId());
 							tm.setText(menu.getName());

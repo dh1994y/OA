@@ -28,13 +28,16 @@ function createMainNav(config,leftConfig){
 			leftItem.append(leftItemli);
 			//为左侧导航栏li设置点击事件
 			leftItemli.click(function(){
-				$(this).addClass("active").siblings().removeClass("active");
-				//ajax请求获取页面
-				
-				//content-div 加载页面
-				var contentId = $(this).parent().attr("markContent");
-				//alert(contentId);
-				$('#'+contentId).load('123.jsp');
+				//没有打开时才重新刷新
+				if(!$(this).hasClass("active")){
+					$(this).addClass("active").siblings().removeClass("active");
+					//ajax请求获取页面
+					
+					//content-div 加载页面
+					var contentId = $(this).parent().attr("markContent");
+					//alert(contentId);
+					$('#'+contentId).load('123.jsp');
+				}
 			});
 		}
 		

@@ -52,7 +52,19 @@ function createMainNav(config,leftConfig){
 			//切换对应左侧导航栏
 			$('#'+leftNavId).addClass("li-show").remove('li-hidden').siblings().removeClass("li-show").addClass("li-hidden");
 			//切换时自动点击左侧第一选项卡
-			$('#'+leftNavId).children(":first").children(":first").click();
+			var leftNavliArr = $('#'+leftNavId).children(":first").children();
+			//alert(leftNavliArr.size());
+			//判断当左侧没有选中项时自动选择第一项
+			//注意dom元素对象长度要用size() 不能用length
+			for(var k=0;k<leftNavliArr.size();k++){			
+				var item = leftNavliArr.get(k);
+				if($(item).hasClass("active")){
+					break;
+				}
+				if(k==leftNavliArr.size()-1){
+					$('#'+leftNavId).children(":first").children(":first").click();
+				}
+			}
 			//切换对应右侧文本区
 			var rightContentliId = $(this).attr('markContentli');
 			//alert(rightContentId);

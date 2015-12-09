@@ -17,6 +17,8 @@
       <bean name="menuService" class="com.nsn.oa.service.MenuService">
       	<property name="menuDao" ref="menuDao"/>
       </bean>
-
+	  <bean name="matterService" class="com.nsn.oa.service.MatterService">
+      	<property name="matterDao" ref="matterDao"/>
+      </bean>
 </beans>
       

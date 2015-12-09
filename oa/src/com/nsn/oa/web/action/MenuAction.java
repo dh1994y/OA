@@ -8,12 +8,15 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.ServletActionContext;
 
 import com.nsn.oa.dao.utils.JsonUtils;
+import com.nsn.oa.domain.Menu;
 import com.nsn.oa.domain.utils.FirstLevelMenu;
 import com.nsn.oa.service.MenuService;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 
-public class MenuAction extends ActionSupport{
+public class MenuAction extends ActionSupport implements ModelDriven<Menu>{
 	
+	private Menu menu = new Menu();
 	private MenuService menuService;
 	
 	public String home(){
@@ -41,6 +44,11 @@ public class MenuAction extends ActionSupport{
 
 	public void setMenuService(MenuService menuService) {
 		this.menuService = menuService;
+	}
+
+	@Override
+	public Menu getModel() {
+		return this.menu;
 	}
 	
 	

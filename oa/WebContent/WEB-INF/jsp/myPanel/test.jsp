@@ -17,7 +17,7 @@
 		<div class="logo png"></div>
 		<div class="input">
 			<div class="log">
-				<form action="${pageContext.request.contextPath}/bridge.jsp" method="post">
+				<form action="${pageContext.request.contextPath}/system/menu/menuAction_home.action" method="post">
 					<div class="name">
 						<label>用户名</label><input type="text" class="text" id="value_1" placeholder="用户名" name="username" tabindex="1">
 					</div>

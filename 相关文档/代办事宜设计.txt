@@ -1,0 +1,25 @@
+一、代办事宜表结构设计
+
+每个用户一条记录
+包括如下字段：
+	id
+	代办事宜
+	最近心情
+	创建时间
+	创建人
+	
+	create table matter(
+		id varchar(100) primary key comment 'id',
+		matter varchar(255) comment '代办事宜',
+		feel varchar(255) comment '最近心情',
+		createDate date comment '创建日期',
+		createUser varchar(100) comment '创建人id'
+	);
+	
+	
+二、代办事宜的相关操作
+	更新或添加代办事宜界面------代办事宜菜单栏目
+	显示代办事宜界面-----我的计划菜单栏目
+	
+	
+	

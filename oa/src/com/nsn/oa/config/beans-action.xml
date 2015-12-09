@@ -17,7 +17,9 @@
       <bean name="menuAction" class="com.nsn.oa.web.action.MenuAction">
       	<property name="menuService" ref="menuService"/>
       </bean>  
-
+	  <bean name="matterAction" class="com.nsn.oa.web.action.MatterAction">
+      	<property name="matterService" ref="matterService"/>
+      </bean>  
       	
 </beans>
       

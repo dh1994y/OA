@@ -1,0 +1,87 @@
+	.container {
+		width: 1000px;
+		background-color: #E4E4E4;
+	}
+	body {
+		color: #333333;
+		background-color: #E4E4E4;
+		font-size: 15px;
+	}
+	a {
+		color: #56A590;
+	}
+	a:hover, a:focus { 
+		color: #209E85;
+		outline:none
+	}
+	div{
+		background-color: white;
+	}
+	/* 头部 */
+	#page-head {
+		overflow: hidden;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+	}
+	#page-head-logo{
+		float: left;
+	}
+	#page-head-right{
+		float: right;
+	}
+	#page-head-right span{
+		margin-left: 20px;
+	}
+	/* 导航条 */
+	#page-nav{
+		clear:both;
+		padding-top: 15px;
+		padding-left: 5px;
+		font-size: 20px;
+		font-weight: 900;
+	}
+	/* 中间区域 */
+	#page-middle{
+		width: 100%;
+		overflow: hidden;
+		background-color: #E4E4E4;
+	}
+	#page-middle-nav{
+		float: left;
+		width: 150px;
+		height: 550px;
+		font-size: 15px;
+		padding-top: 25px;
+	}
+	#page-middle-nav > ul {
+		padding-left:0px;
+	}
+	#page-middle-content > ul {
+		padding-left:0px;
+	}
+	#page-middle-content{
+		float: right;
+		width: 815px;
+		height: 550px;
+	}
+	
+	/* 尾部 */
+	
+	/* 自定义样式 */
+	.li-hidden{
+		display: none;
+	}
+	.li-show{
+		display: block;
+	}
+	.content-div{
+		width: 815px;
+		height: 550px;
+		overflow: auto;
+	}
+	
+	
+	
+	
+	
+	

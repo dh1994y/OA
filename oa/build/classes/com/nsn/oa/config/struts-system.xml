@@ -5,7 +5,7 @@
 <struts>
 	
 	<package name="menu" namespace="/system" extends="struts-default">
-		<action name="menuAction_*" class="com.nsn.oa.web.action.MenuAction" method="{1}">
+		<action name="menuAction_*" class="menuAction" method="{1}">
 			<result name="home">
 				/WEB-INF/jsp/home.jsp
 			</result>

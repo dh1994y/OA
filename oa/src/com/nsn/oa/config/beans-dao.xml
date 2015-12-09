@@ -19,5 +19,6 @@
       </bean>  
       
       <bean name="menuDao" class="com.nsn.oa.dao.impl.MenuDaoImpl" parent="baseDao"/>
+      <bean name="matterDao" class="com.nsn.oa.dao.impl.MatterDaoImpl" parent="baseDao"/>
 </beans>
       

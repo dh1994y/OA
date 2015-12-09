@@ -11,10 +11,11 @@ function createMainNav(config,leftConfig){
 		//id定位标识
 		var id = 'a0'+(i+1);
 		var cid = "c0"+(i+1);
+		var lcid = "lc0"+(i+1);
 		//创建主菜单li
-		var mainItem = $('<li markNav="'+id+'" markContent="'+cid+'"><a href="#">'+config[i]+'</a></li>');
+		var mainItem = $('<li markNav="'+id+'" markContentli="'+lcid+'"><a href="#">'+config[i]+'</a></li>');
 		//创建右侧内容区li
-		var contentli = $('<li id="'+cid+'"><div class=".content-div"></div></li>');
+		var contentli = $('<li id="'+lcid+'"><div id="'+cid+'" class=".content-div"></div></li>');
 		//创建左侧导航li
 		var leftli = $('<li id="'+id+'"></li>');
 		var leftItem = $('<ul markContent="'+cid+'" class="nav nav-pills nav-stacked"></ul>');
@@ -49,13 +50,13 @@ function createMainNav(config,leftConfig){
 			var leftNavId = $(this).attr('markNav');
 			//alert(leftNavId);
 			//切换对应左侧导航栏
-			$('#'+leftNavId).addClass("li-show").siblings().removeClass("li-show").addClass("li-hidden");
+			$('#'+leftNavId).addClass("li-show").remove('li-hidden').siblings().removeClass("li-show").addClass("li-hidden");
 			//切换时自动点击左侧第一选项卡
 			$('#'+leftNavId).children(":first").children(":first").click();
 			//切换对应右侧文本区
-			var rightContentId = $(this).attr('markContent');
+			var rightContentliId = $(this).attr('markContentli');
 			//alert(rightContentId);
-			$('#'+rightContentId).addClass("li-show").siblings().removeClass("li-show").addClass("li-hidden");
+			$('#'+rightContentliId).addClass("li-show").remove('li-hidden').siblings().removeClass("li-show").addClass("li-hidden");
 		});
 	}
 	//创建完成选中选中第一项

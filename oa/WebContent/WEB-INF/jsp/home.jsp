@@ -67,18 +67,19 @@
       <script src="${pageContext.request.contextPath}/resource/bootstrap/js/bootstrap.min.js"></script>
 	  <script src="${pageContext.request.contextPath}/resource/js/oa.js"></script>
 	  <script>
-		var config = ['我的面板','工作流程管理','系统管理','设备管理'];
-		var leftConfig = [
-			['代办事宜','个人信息维护','修改密码'],
-			['用户管理','角色管理','菜单管理'],
-			['工作流程申请','我的申请查询','待我审批','申请归档模块','工作流程部署'],
-			['设备基本信息维护','设备维护记录','设备报废记录']
-		];
-		createMainNav(config,leftConfig);
-		$('#exit').click(function(){
-			$('#c01').load('234.jsp');
-		});
 
+		var config = {
+			mainNavList : ['我的面板','工作流程管理'],
+			leftNavList : [ 
+				[
+					{name:"代办事宜",url:"123.jsp"},{name:"个人信息维护",url:"/oa"}
+				],
+				[
+					{name:"修改密码",url:"/oa/myPanel/matter/matterAction_home.action"}
+				]
+			]
+		}
+		createMenu(config);
 	  </script>
    </body>
 </html>

@@ -10,7 +10,7 @@
 					{name:"代办事宜",url:"123.jsp"},{name:"个人信息维护",url:"234.jsp"}
 				],
 				[
-					{name:"修改密码",url:"index.jsp"}
+					{name:"修改密码",url:"/index.html"}
 				]
 			]
 		}

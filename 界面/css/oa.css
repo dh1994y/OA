@@ -17,6 +17,12 @@
 	div{
 		background-color: white;
 	}
+	iframe{
+		border: 0px;
+		width: 815px;
+		height: 550px;
+		overflow: auto;
+	}
 	/* 头部 */
 	#page-head {
 		overflow: hidden;

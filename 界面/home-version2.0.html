@@ -1,14 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
    <head>
       <title>OA系统</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
       <!-- 引入 Bootstrap css-->
-      <link href="${pageContext.request.contextPath}/resource/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	  <!-- 引入 自定义 css-->
-	  <link href="${pageContext.request.contextPath}/resource/css/oa.css" rel="stylesheet">
+	  <link href="css/oa.css" rel="stylesheet">
 
       <!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
       <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
@@ -50,7 +48,7 @@
 
 			</div>
 			<!-- 右侧内容区 -->
-			<div id="page-middle-right">  
+			<div id="page-middle-content">
 				<ul id="page-middle-right-content">
 					
 				</ul>
@@ -62,18 +60,24 @@
 	  <!-- 界面布局结束 -->
 
       <!-- 引入jQuery的js) -->
-      <script src="${pageContext.request.contextPath}/resource/js/jquery-2.1.1.min.js"></script>
+      <script src="js/jquery-2.1.1.min.js"></script>
       <!-- 引入bootstrap的js -->
-      <script src="${pageContext.request.contextPath}/resource/bootstrap/js/bootstrap.min.js"></script>
-	  <script src="${pageContext.request.contextPath}/resource/js/oa.js"></script>
+      <script src="bootstrap/js/bootstrap.min.js"></script>
+	  <script src="js/oa.js"></script>
 	  <script>
-		
-	  	$.post("/oa/system/menu/menuAction_getMenuConfig.action",function(config){
-	  		alert(config);
-	  		alert(eval(config));
-	  		createMenu(eval(config));
-	  	});
-		
+
+		var config = {
+			mainNavList : ['我的面板','工作流程管理'],
+			leftNavList : [ 
+				[
+					{name:"代办事宜",url:"123.jsp"},{name:"个人信息维护",url:"234.jsp"}
+				],
+				[
+					{name:"修改密码",url:"index.html"}
+				]
+			]
+		}
+		createMenu(config);
 	  </script>
    </body>
 </html>

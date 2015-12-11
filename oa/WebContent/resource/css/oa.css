@@ -12,7 +12,8 @@
 	}
 	a:hover, a:focus { 
 		color: #209E85;
-		outline:none
+		outline:none;
+		text-decoration: none;
 	}
 	div{
 		background-color: white;
@@ -22,6 +23,9 @@
 		width: 815px;
 		height: 550px;
 		overflow: auto;
+	}
+	ul li{
+		list-style: none;
 	}
 	/* 头部 */
 	#page-head {
@@ -57,20 +61,47 @@
 		width: 150px;
 		height: 550px;
 		font-size: 15px;
-		padding-top: 25px;
+		padding-top: 15px;
 	}
 	#page-middle-nav > ul {
 		padding-left:0px;
 	}
-	#page-middle-content > ul {
-		padding-left:0px;
-	}
-	#page-middle-content{
+	#page-middle-right{
 		float: right;
 		width: 815px;
 		height: 550px;
 	}
-	
+	#page-middle-right-top{
+		width: 815px;
+		height: 20px;
+		margin-top: 10px;
+	}
+	#page-middle-right ul{
+		padding-left: 2px;
+	}
+	#page-middle-right-top li{
+		border-right: 1px solid #56A590;
+		border-top: 1px solid #56A590;
+		border-top-left-radius: 5px;
+		border-top-right-radius: 15px;
+		float: left;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	#page-middle-right-top a{
+		cursor: pointer;
+		display: inline;
+		margin-right: 10px;
+	}
+	#page-middle-right-below{
+		width: 815px;
+		height: 530px;
+	}
+	#page-middle-right-below > ul {
+		padding-left:0px;
+	}
+
+
 	/* 尾部 */
 	
 	/* 自定义样式 */
@@ -85,9 +116,13 @@
 		height: 550px;
 		overflow: auto;
 	}
-	
-	
-	
-	
-	
+	.myli-close{
+		background-color: #E4E4E4;
+		border-bottom: 1px solid #56A590;
+	}
+	.myli-active{
+		background-color: white;
+		border-bottom: 1px solid white;
+	}
+
 	

@@ -69,9 +69,7 @@
 	  <script>
 		
 	  	$.post("/oa/system/menu/menuAction_getMenuConfig.action",function(config){
-	  		alert(config);
-	  		alert(eval(config));
-	  		createMenu(eval(config));
+	  		createMenu(eval('('+config+')'));
 	  	});
 		
 	  </script>

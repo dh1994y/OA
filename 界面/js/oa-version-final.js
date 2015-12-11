@@ -106,7 +106,7 @@ function createMenu(config){
 					}
 					//创建右上标签
 					//alert($(this).children(":first").text());
-					var rtLabelDom = $('<li id="'+drtid+'" class="myli-active" drbidMark="'+drbid+'" lidMark="'+$(this).attr("id")+'"><a>'+$(this).children(":first").text()+'</a><img src="image/close.png"/></li>');
+					var rtLabelDom = $('<li id="'+drtid+'" class="myli-active" drbidMark="'+drbid+'" lidMark="'+$(this).attr("id")+'"><a>'+$(this).children(":first").text()+'</a><img src="/oa/resource/image/close.png"/></li>');
 					$(this).attr("drtidMark",drtid).attr("drbidMark",drbid);
 					//添加到容器
 					$("#"+$(this).attr("didMark")).children(":first").children(":first").append(rtLabelDom);
@@ -126,16 +126,16 @@ function createMenu(config){
 						if(lnavItemDom.hasClass("active")){
 							//alert("移除样式");
 							lnavItemDom.removeClass("active");
+							//选中上一个标签
+							//alert($(this).parent().next());
+							if($(this).parent().next().length>0){
+								$(this).parent().next().children(":first").click();
+							}else if($(this).parent().prev().length>0){
+								$(this).parent().prev().children(":first").click();
+							}
 						}
 						//移除iframe 先移除iframe避免 移除导航条后找不到 this
 						$("#"+$(this).parent().attr("drbidMark")).remove();
-						//选中上一个标签
-						//alert($(this).parent().next());
-						if($(this).parent().next().length>0){
-							$(this).parent().next().children(":first").click();
-						}else if($(this).parent().prev().length>0){
-							$(this).parent().prev().children(":first").click();
-						}
 						//移除导航条
 						$($(this).parent()).remove();	
 					});

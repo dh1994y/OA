@@ -43,30 +43,6 @@ public class MenuService {
 				menuItemList.add(menuItem);
 			}
 		}
-		/*
-		//按条件检索出所有菜单
-		Conditions conditions = new Conditions();
-		conditions.addCondition("isUse", 1, Operator.EQUALS);
-		conditions.addOrderBy("level", true);
-		conditions.addOrderBy("orderValue", true);
-		List<Menu> menuList = menuDao.findByConditions(conditions);
-		//设置MenuConfig对象内容
-		for (Menu menu : menuList) {
-			if(menu.getLevel()==1){
-				mainNavList.add(menu.getName());
-				List<MenuItem> menuItemList = new ArrayList<>();
-				leftNavList.add(menuItemList);
-				for(Menu m : menuList){
-					if(m.getParentId().equals(menu.getId())){
-						MenuItem menuItem = new MenuItem();
-						menuItem.setName(m.getName());
-						menuItem.setUrl(m.getUrl());
-						menuItemList.add(menuItem);
-					}
-				}
-			}
-		}
-		*/
 		config.setLeftNavList(leftNavList);
 		config.setMainNavList(mainNavList);
 		return config;

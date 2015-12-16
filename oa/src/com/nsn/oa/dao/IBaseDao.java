@@ -59,4 +59,10 @@ public interface IBaseDao<T> {
 	 * @return
 	 */
 	public List<T> findByConditions(Conditions conditions);
+	
+	/**
+	 * 将指定对象从session中移除
+	 * @param bean
+	 */
+	public void removeFromSession(T bean);
 }

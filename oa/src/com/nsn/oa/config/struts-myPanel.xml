@@ -7,9 +7,14 @@
 	<package name="matter" namespace="/myPanel" extends="struts-default">
 		<action name="matterAction_*" class="matterAction" method="{1}">
 			<result name="home">
-				/WEB-INF/jsp/myPanel/test.jsp
+				/WEB-INF/jsp/myPanel/matter.jsp
 			</result>
-		
+			<result name="edit">
+				/WEB-INF/jsp/myPanel/matterEdit.jsp
+			</result>
+			<result name="update" type="redirect">
+				/myPanel/matter/matterAction_home.action
+			</result>
 		</action>
 	</package>
 	

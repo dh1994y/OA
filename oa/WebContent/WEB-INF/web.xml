@@ -18,7 +18,8 @@
   
   <filter-mapping>
   	<filter-name>struts2</filter-name>
-  	<url-pattern>/*</url-pattern>
+  	<url-pattern>*.action</url-pattern>
+  	<url-pattern>*.jsp</url-pattern>
   </filter-mapping>
   
   <!-- 初始化参数：spring配置文件路径 -->
@@ -31,4 +32,20 @@
   <listener>
   	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+  <!-- 
+  <listener>
+  	<listener-class>com.nsn.oa.web.listener.InitListener</listener-class>
+  </listener> -->
+  
+  
+  
+  <!-- servlet -->
+  <servlet>
+  	<servlet-name>KindEditorServlet</servlet-name>
+  	<servlet-class>com.nsn.oa.web.servlet.KindEditorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>KindEditorServlet</servlet-name>
+  	<url-pattern>/KindEditorServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

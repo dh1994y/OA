@@ -13,6 +13,7 @@ public class Matter {
 	private String matter;
 	private String feel;
 	private Date createDate;
+	private Date lastUpdateDate;
 	private String createUser;
 	
 	public String getId() {
@@ -44,6 +45,12 @@ public class Matter {
 	}
 	public void setCreateUser(String createUser) {
 		this.createUser = createUser;
+	}
+	public Date getLastUpdateDate() {
+		return lastUpdateDate;
+	}
+	public void setLastUpdateDate(Date lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
 	}
 	
 	

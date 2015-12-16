@@ -12,6 +12,7 @@
 		<property name="matter" column="matter"/>
 		<property name="feel" column="feel"/>
 		<property name="createDate" column="createDate"/>
+		<property name="lastUpdateDate" column="lastUpdateDate"/>
 		<property name="createUser" column="createUser"/>
 	</class>
 </hibernate-mapping>

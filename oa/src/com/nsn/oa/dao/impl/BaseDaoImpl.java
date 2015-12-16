@@ -112,5 +112,10 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 //		System.out.println(Arrays.toString(values));
 		return template.find(hql, values);
 	}
-
+	
+	// ================将制定对象从session中移除======================
+	public void removeFromSession(T bean){
+		template.evict(bean);
+	}
+	
 }

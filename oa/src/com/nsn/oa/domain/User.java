@@ -142,10 +142,10 @@ public class User {
 	public void setLastModifyDate(Date lastModifyDate) {
 		this.lastModifyDate = lastModifyDate;
 	}
-	public boolean isDelete() {
+	public boolean getIsDelete() {
 		return isDelete;
 	}
-	public void setDelete(boolean isDelete) {
+	public void setIsDelete(boolean isDelete) {
 		this.isDelete = isDelete;
 	}
 	

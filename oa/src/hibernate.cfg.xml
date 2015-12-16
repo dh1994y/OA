@@ -20,5 +20,6 @@
 		<!-- 定义表映射 -->
 		<mapping resource="com/nsn/oa/domain/Menu.hbm.xml"/>
 		<mapping resource="com/nsn/oa/domain/Matter.hbm.xml"/>
+		<mapping resource="com/nsn/oa/domain/User.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

@@ -9,7 +9,11 @@
 			<result name="home">
 				/WEB-INF/jsp/home.jsp
 			</result>
-		
+		</action>
+		<action name="userAction_*" class="userAction" method="{1}">
+			<result name="home">
+				/WEB-INF/jsp/system/userHome.jsp
+			</result>
 		</action>
 	</package>
 	

@@ -1,4 +1,4 @@
-package com.nsn.oa.dao.utils;
+package com.nsn.oa.utils;
 
 import java.io.IOException;
 

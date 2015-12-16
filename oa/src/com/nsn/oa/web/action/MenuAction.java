@@ -4,11 +4,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 
-import com.nsn.oa.dao.utils.JsonUtils;
 import com.nsn.oa.domain.Menu;
 import com.nsn.oa.domain.User;
 import com.nsn.oa.domain.utils.MenuConfig;
 import com.nsn.oa.service.MenuService;
+import com.nsn.oa.utils.JsonUtils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;

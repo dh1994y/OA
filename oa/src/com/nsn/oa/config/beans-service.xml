@@ -20,5 +20,8 @@
 	  <bean name="matterService" class="com.nsn.oa.service.MatterService">
       	<property name="matterDao" ref="matterDao"/>
       </bean>
+      <bean name="userService" class="com.nsn.oa.service.UserService">
+      	<property name="userDao" ref="userDao"/>
+      </bean>
 </beans>
       

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dictionary>
+	<group key="gender" value="性别">
+		<item key="gender_male" value="男"></item>
+		<item key="gender_female" value="女"></item>
+	</group>
+	<group key="isDuty" value="是否在职">
+		<item key="isDuty_on" value="在职"></item>
+		<item key="isDuty_off" value="离职"></item>
+	</group>
+</dictionary>

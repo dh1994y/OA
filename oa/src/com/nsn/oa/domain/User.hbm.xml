@@ -1,0 +1,32 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 定义映射类 表 -->
+	<class name="com.nsn.oa.domain.User" table="user">
+		<!-- 定义主键映射 -->
+		<id name="id" column="id">
+			<generator class="uuid"/>
+		</id>
+		<!-- 定义字段映射 -->
+		<property name="account" column="account"/>
+		<property name="password" column="password"/>
+		<property name="username" column="username"/>
+		<property name="gender" column="gender"/>
+		<property name="birthday" column="birthday"/>
+		<property name="telephone" column="telephone"/>
+		<property name="mobilePhone" column="mobilePhone"/>
+		<property name="email" column="email"/>
+		<property name="address" column="address"/>
+		<property name="isDuty" column="isDuty"/>
+		<property name="units" column="units"/>
+		<property name="onDutyDate" column="onDutyDate"/>
+		<property name="offDutyDate" column="offDutyDate"/>
+		<property name="comment" column="comment"/>
+		<property name="createUser" column="createUser"/>
+		<property name="createDate" column="createDate"/>
+		<property name="lastModifyUser" column="lastModifyUser"/>
+		<property name="lastModifyDate" column="lastModifyDate"/>
+		<property name="isDelete" column="isDelete"/>
+	</class>
+</hibernate-mapping>

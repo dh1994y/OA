@@ -20,6 +20,8 @@
 	  <bean name="matterAction" class="com.nsn.oa.web.action.MatterAction">
       	<property name="matterService" ref="matterService"/>
       </bean>  
-      	
+      <bean name="userAction" class="com.nsn.oa.web.action.UserAction">
+      	<property name="userService" ref="userService"/>
+      </bean>   	
 </beans>
       

@@ -1,0 +1,23 @@
+数据字典：经常使用，已经确定，几乎不变的数据项
+设计成xml存储结构，减轻访问数据库的压力与慢速
+系统启动时查询所有数据字典，避免使用时耗时查询，用户体验访问慢
+数据字典数据应该设计成单例模式
+采用表达式语言易访问的格式存储数据字典 如el/ognl  设计成 map或者javabean
+
+
+所属单位  组织结构管理
+设备类型  
+设备状态  正常 故障 报废
+是否在职  在职 离职
+性别	  男   女
+故障类型   
+<dictionary>
+	<group key="gender" value="性别">
+		<item key="gender_male" value="男"></item>
+		<item key="gender_female" value="女"></item>
+	</group>
+	<group key="isDuty" value="是否在职">
+		<item key="isDuty_on" value="在职"></item>
+		<item key="isDuty_off" value="离职"></item>
+	</group>
+</dictionary>

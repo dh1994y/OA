@@ -1,64 +1,64 @@
-Ò»¡¢Éè±¸»ù±¾ĞÅÏ¢Î¬»¤
-1¡¢±í½á¹¹Éè¼Æ
-Éè±¸ÀàĞÍ¡¢Éè±¸Ãû³Æ¡¢Éè±¸³§¼Ò¡¢Éè±¸¹æ¸ñ
+ä¸€ã€è®¾å¤‡åŸºæœ¬ä¿¡æ¯ç»´æŠ¤
+1ã€è¡¨ç»“æ„è®¾è®¡
+è®¾å¤‡ç±»å‹ã€è®¾å¤‡åç§°ã€è®¾å¤‡å‚å®¶ã€è®¾å¤‡è§„æ ¼
 create table equipment(
 	id varchar(100) pramary key comment "id",
-	equipName varchar(255) comment "Éè±¸Ãû³Æ",
-	department varchar(100) comment "ËùÊôµ¥Î»",
-	equipType varchar(255) comment "Éè±¸ÀàĞÍ",
-	equipSpec varchar(255) comment "Éè±¸¹æ¸ñ",
-	equipVender varchar(255) comment "Éè±¸³§¼Ò",
-	equipStatus varchar(100) comment "Éè±¸×´Ì¬£ºÕı³£/¹ÊÕÏ/±¨·Ï",
-	comment text,#±¸×¢
+	equipName varchar(255) comment "è®¾å¤‡åç§°",
+	department varchar(100) comment "æ‰€å±å•ä½",
+	equipType varchar(255) comment "è®¾å¤‡ç±»å‹",
+	equipSpec varchar(255) comment "è®¾å¤‡è§„æ ¼",
+	equipVender varchar(255) comment "è®¾å¤‡å‚å®¶",
+	equipStatus varchar(100) comment "è®¾å¤‡çŠ¶æ€ï¼šæ­£å¸¸/æ•…éšœ/æŠ¥åºŸ",
+	comment text,#å¤‡æ³¨
 		
-	#----------Î¬»¤×Ö¶Î-------------
-	createUser varchar(100) comment "´´½¨Õßid",
-	createDate date comment "´´½¨ÈÕÆÚ",
-	lastModifyUser varchar(100) comment "×îºóĞŞ¸ÄÈËid",
-	lastModifyDate date comment "×îºóĞŞ¸ÄÈÕÆÚ",
+	#----------ç»´æŠ¤å­—æ®µ-------------
+	createUser varchar(100) comment "åˆ›å»ºè€…id",
+	createDate date comment "åˆ›å»ºæ—¥æœŸ",
+	lastModifyUser varchar(100) comment "æœ€åä¿®æ”¹äººid",
+	lastModifyDate date comment "æœ€åä¿®æ”¹æ—¥æœŸ",
 
-	#----------¼ÙÉ¾³ı Êı¾İÊÇºËĞÄ-----------------
-	isDelete boolean comment "ÊÇ·ñ±»É¾³ı"
+	#----------å‡åˆ é™¤ æ•°æ®æ˜¯æ ¸å¿ƒ-----------------
+	isDelete boolean comment "æ˜¯å¦è¢«åˆ é™¤"
 );
-2¡¢equip_home.jsp
-Ìá¹©Ìí¼Ó°´Å¥
+2ã€equip_home.jsp
+æä¾›æ·»åŠ æŒ‰é’®
 
-¼ìË÷ÀàĞÍ£º
-ÊäÈë¿ò£ºÉè±¸Ãû³Æ
-ÏÂÀ­¿ò£ºÉè±¸ÀàĞÍ Éè±¸¹æ¸ñ Éè±¸³§¼Ò Éè±¸×´Ì¬ ËùÊôµ¥Î»
+æ£€ç´¢ç±»å‹ï¼š
+è¾“å…¥æ¡†ï¼šè®¾å¤‡åç§°
+ä¸‹æ‹‰æ¡†ï¼šè®¾å¤‡ç±»å‹ è®¾å¤‡è§„æ ¼ è®¾å¤‡å‚å®¶ è®¾å¤‡çŠ¶æ€ æ‰€å±å•ä½
 
-±í¸ñÏÔÊ¾
-Ãû³Æ ÀàĞÍ ¹æ¸ñ ³§¼Ò   Í¼±ê: ÏêÇé ĞŞ¸Ä É¾³ı Î¬»¤£¨µã»÷µ¯³öÌí¼ÓÎ¬»¤ÄÚÈİ£© ±¨·Ï£¨µã»÷Ìí¼Ó±¨·ÏÄÚÈİ£©
+è¡¨æ ¼æ˜¾ç¤º
+åç§° ç±»å‹ è§„æ ¼ å‚å®¶   å›¾æ ‡: è¯¦æƒ… ä¿®æ”¹ åˆ é™¤ ç»´æŠ¤ï¼ˆç‚¹å‡»å¼¹å‡ºæ·»åŠ ç»´æŠ¤å†…å®¹ï¼‰ æŠ¥åºŸï¼ˆç‚¹å‡»æ·»åŠ æŠ¥åºŸå†…å®¹ï¼‰
 
-ÏêÇé£º²»°üÀ¨¼ÙÉ¾³ı×Ö¶ÎºÍid
-ĞŞ¸Ä£º²»°üÀ¨Î¬»¤×Ö¶Î ¼ÙÉ¾³ı×Ö¶ÎºÍid
-Ìí¼Ó£º²»°üÀ¨Î¬»¤×Ö¶Î ¼ÙÉ¾³ı×Ö¶ÎºÍid
+è¯¦æƒ…ï¼šä¸åŒ…æ‹¬å‡åˆ é™¤å­—æ®µå’Œid
+ä¿®æ”¹ï¼šä¸åŒ…æ‹¬ç»´æŠ¤å­—æ®µ å‡åˆ é™¤å­—æ®µå’Œid
+æ·»åŠ ï¼šä¸åŒ…æ‹¬ç»´æŠ¤å­—æ®µ å‡åˆ é™¤å­—æ®µå’Œid
 
 
-¶ş¡¢Éè±¸Î¬»¤¼ÇÂ¼£¨Î¬»¤¹ÊÕÏÉè±¸£©
-1¡¢±í½á¹¹Éè¼Æ
+äºŒã€è®¾å¤‡ç»´æŠ¤è®°å½•ï¼ˆç»´æŠ¤æ•…éšœè®¾å¤‡ï¼‰
+1ã€è¡¨ç»“æ„è®¾è®¡
 create table equipment_maintenance(
 	id varchar(100) pramary key comment "id",
-	equipId varchar(100) comment "Î¬»¤Éè±¸id",
-	maintenanceUser varchar(100) comment "Î¬»¤ÈËid",
-	maintenanceDate date comment "Î¬»¤ÈÕÆÚ",
-	comment text,#±¸×¢
+	equipId varchar(100) comment "ç»´æŠ¤è®¾å¤‡id",
+	maintenanceUser varchar(100) comment "ç»´æŠ¤äººid",
+	maintenanceDate date comment "ç»´æŠ¤æ—¥æœŸ",
+	comment text,#å¤‡æ³¨
 );
-2¡¢equip_maintenanceRecord.jsp
-½öÌá¹©²éÑ¯¹¦ÄÜ
-²éÑ¯Ìõ¼ş
-	Î¬»¤ÈÕÆÚ·¶Î§
+2ã€equip_maintenanceRecord.jsp
+ä»…æä¾›æŸ¥è¯¢åŠŸèƒ½
+æŸ¥è¯¢æ¡ä»¶
+	ç»´æŠ¤æ—¥æœŸèŒƒå›´
 
-Èı¡¢Éè±¸±¨·Ï¼ÇÂ¼
-1¡¢±í½á¹¹Éè¼Æ
+ä¸‰ã€è®¾å¤‡æŠ¥åºŸè®°å½•
+1ã€è¡¨ç»“æ„è®¾è®¡
 create table equipment_reject(
 	id varchar(100) pramary key comment "id",
-	equipId varchar(100) comment "±¨·ÏÉè±¸id",
-	maintenanceUser varchar(100) comment "±¨·ÏÈËid",
-	maintenanceDate date comment "±¨·ÏÈÕÆÚ",
-	comment text,#±¸×¢	
+	equipId varchar(100) comment "æŠ¥åºŸè®¾å¤‡id",
+	maintenanceUser varchar(100) comment "æŠ¥åºŸäººid",
+	maintenanceDate date comment "æŠ¥åºŸæ—¥æœŸ",
+	comment text,#å¤‡æ³¨	
 );
-2¡¢equip_rejectRecord.jsp
-½öÌá¹©²éÑ¯¹¦ÄÜ
-²éÑ¯Ìõ¼ş
-	Î¬»¤ÈÕÆÚ·¶Î§
+2ã€equip_rejectRecord.jsp
+ä»…æä¾›æŸ¥è¯¢åŠŸèƒ½
+æŸ¥è¯¢æ¡ä»¶
+	ç»´æŠ¤æ—¥æœŸèŒƒå›´

@@ -1,28 +1,39 @@
 	.container {
-		width: 1000px;
-		background-color: #E4E4E4;
+		width: 1200px;
+		background-color: white;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+		padding: 0px;
+		margin: 0px auto;
 	}
 	body {
 		color: #333333;
-		background-color: #E4E4E4;
+		background-color: inactiveborder;
+		margin: 0px;
 		font-size: 15px;
 	}
-	a {
-		color: #56A590;
+	a{
+		text-decoration: none;
 	}
 	a:hover, a:focus { 
-		color: #209E85;
 		outline:none;
 		text-decoration: none;
+	}
+	a:link{
+		color: blue;
 	}
 	div{
 		background-color: white;
 	}
 	iframe{
 		border: 0px;
-		width: 815px;
+		width: 1015px;
 		height: 550px;
 		overflow: auto;
+	}
+	ul{
+		margin: 0px;
+		padding: 0px;
 	}
 	ul li{
 		list-style: none;
@@ -32,12 +43,17 @@
 		overflow: hidden;
 		border-top-left-radius: 10px;
 		border-top-right-radius: 10px;
+		background-color: RGB(54,68,123);
+		padding-bottom: 15px;
+		color: white;
 	}
 	#page-head-logo{
 		float: left;
+		background-color: RGB(54,68,123);
 	}
 	#page-head-right{
 		float: right;
+		background-color: RGB(54,68,123);
 	}
 	#page-head-right span{
 		margin-left: 20px;
@@ -45,39 +61,44 @@
 	/* 导航条 */
 	#page-nav{
 		clear:both;
-		padding-top: 15px;
 		padding-left: 5px;
 		font-size: 20px;
 		font-weight: 900;
+		background-color: white;
+		overflow: hidden;
 	}
+
 	/* 中间区域 */
 	#page-middle{
+		clear: both;
 		width: 100%;
 		overflow: hidden;
 		background-color: #E4E4E4;
 	}
 	#page-middle-nav{
 		float: left;
-		width: 150px;
+		width: 180px;
 		height: 550px;
 		font-size: 15px;
 		padding-top: 15px;
+		background-color: #E4E4E4;
 	}
 	#page-middle-nav > ul {
 		padding-left:0px;
 	}
 	#page-middle-right{
 		float: right;
-		width: 815px;
+		width: 1016px;
 		height: 550px;
 	}
 	#page-middle-right-top{
-		width: 815px;
-		height: 20px;
-		margin-top: 10px;
+		width: 1016px;
+		height: 22px;
+		padding-top: 10px;
+		background-color: #E4E4E4;
 	}
 	#page-middle-right ul{
-		padding-left: 2px;
+		padding-left: 0px;
 	}
 	#page-middle-right-top li{
 		border-right: 1px solid #56A590;
@@ -94,7 +115,7 @@
 		margin-right: 10px;
 	}
 	#page-middle-right-below{
-		width: 815px;
+		width: 1015px;
 		height: 530px;
 	}
 	#page-middle-right-below > ul {
@@ -112,7 +133,7 @@
 		display: block;
 	}
 	.content-div{
-		width: 815px;
+		width: 1015px;
 		height: 550px;
 		overflow: auto;
 	}
@@ -124,7 +145,28 @@
 		background-color: white;
 		border-bottom: 1px solid white;
 	}
-
+	.myactive{
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+		background-color: #E4E4E4;
+	}
+	.mynav{
+		margin-top: 10px;
+	}
+	.mynav li{
+		float: left;
+		padding: 10px 20px;
+	}
+	.leftnav{
+		
+	}
+	.leftnav li{
+		padding: 5px 10px 10px 15px;
+	}
+	.leftactive{
+		border-radius: 10px;
+		background-color: #CC99FF;
+	}
 	
 	
 	

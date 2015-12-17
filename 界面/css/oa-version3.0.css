@@ -1,39 +1,28 @@
 	.container {
-		width: 1100px;
-		background-color: white;
-		border-top-left-radius: 10px;
-		border-top-right-radius: 10px;
-		padding: 0px;
-		margin: 0px auto;
+		width: 1000px;
+		background-color: #E4E4E4;
 	}
 	body {
 		color: #333333;
-		background-color: inactiveborder;
-		margin: 0px;
-		font-size: 14px;
+		background-color: #E4E4E4;
+		font-size: 15px;
 	}
-	a{
-		text-decoration: none;
+	a {
+		color: #56A590;
 	}
 	a:hover, a:focus { 
+		color: #209E85;
 		outline:none;
 		text-decoration: none;
-	}
-	a:link{
-		color: blue;
 	}
 	div{
 		background-color: white;
 	}
 	iframe{
 		border: 0px;
-		width: 935px;
+		width: 815px;
 		height: 550px;
 		overflow: auto;
-	}
-	ul{
-		margin: 0px;
-		padding: 0px;
 	}
 	ul li{
 		list-style: none;
@@ -43,17 +32,12 @@
 		overflow: hidden;
 		border-top-left-radius: 10px;
 		border-top-right-radius: 10px;
-		background-color: RGB(54,68,123);
-		padding-bottom: 10px;
-		color: white;
 	}
 	#page-head-logo{
 		float: left;
-		background-color: RGB(54,68,123);
 	}
 	#page-head-right{
 		float: right;
-		background-color: RGB(54,68,123);
 	}
 	#page-head-right span{
 		margin-left: 20px;
@@ -61,44 +45,39 @@
 	/* 导航条 */
 	#page-nav{
 		clear:both;
+		padding-top: 15px;
 		padding-left: 5px;
-		font-size: 18px;
+		font-size: 20px;
 		font-weight: 900;
-		background-color: white;
-		overflow: hidden;
 	}
-
 	/* 中间区域 */
 	#page-middle{
-		clear: both;
 		width: 100%;
 		overflow: hidden;
 		background-color: #E4E4E4;
 	}
 	#page-middle-nav{
 		float: left;
-		width: 160px;
+		width: 150px;
 		height: 550px;
-		font-size: 14px;
+		font-size: 15px;
 		padding-top: 15px;
-		background-color: #E4E4E4;
 	}
 	#page-middle-nav > ul {
 		padding-left:0px;
 	}
 	#page-middle-right{
 		float: right;
-		width: 935px;
+		width: 815px;
 		height: 550px;
 	}
 	#page-middle-right-top{
-		width: 935px;
-		height: 22px;
-		padding-top: 10px;
-		background-color: #E4E4E4;
+		width: 815px;
+		height: 20px;
+		margin-top: 10px;
 	}
 	#page-middle-right ul{
-		padding-left: 0px;
+		padding-left: 2px;
 	}
 	#page-middle-right-top li{
 		border-right: 1px solid #56A590;
@@ -106,7 +85,6 @@
 		border-top-left-radius: 5px;
 		border-top-right-radius: 15px;
 		float: left;
-		padding-top: 1px;
 		padding-left: 10px;
 		padding-right: 10px;
 	}
@@ -116,7 +94,7 @@
 		margin-right: 10px;
 	}
 	#page-middle-right-below{
-		width: 935px;
+		width: 815px;
 		height: 530px;
 	}
 	#page-middle-right-below > ul {
@@ -134,7 +112,7 @@
 		display: block;
 	}
 	.content-div{
-		width: 935px;
+		width: 815px;
 		height: 550px;
 		overflow: auto;
 	}
@@ -146,26 +124,9 @@
 		background-color: white;
 		border-bottom: 1px solid white;
 	}
-	.myactive{
-		border-top-left-radius: 10px;
-		border-top-right-radius: 10px;
-		background-color: #E4E4E4;
-	}
-	.mynav{
-		margin-top: 10px;
-	}
-	.mynav li{
-		float: left;
-		padding: 9px 18px;
-	}
-	.leftnav{
-		
-	}
-	.leftnav li{
-		padding: 5px 10px 10px 15px;
-	}
-	.leftactive{
-		border-radius: 10px;
-		background-color: #CC99FF;
-	}
+
+	
+	
+	
+	
 	

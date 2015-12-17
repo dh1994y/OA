@@ -45,7 +45,7 @@ function createMenu(config){
 		//为主菜单项添加点击事件
 		mainNavItemDom.click(function(){
 			//当前添加活动样式 其余移除活动样式
-			$(this).addClass("active").siblings().removeClass("active");
+			$(this).addClass("myactive").siblings().removeClass("myactive");
 			//切换左侧导航栏
 			var leftNavId = $(this).attr("leftMark");
 			$('#'+leftNavId).addClass("li-show").remove('li-hidden').siblings().removeClass("li-show").addClass("li-hidden");
@@ -56,7 +56,7 @@ function createMenu(config){
 			//注意dom元素对象长度要用size() 不能用length
 			for(var k=0;k<leftNavliArr.size();k++){			
 				var item = leftNavliArr.get(k);
-				if($(item).hasClass("active")){
+				if($(item).hasClass("leftactive")){
 					break;
 				}
 				if(k==leftNavliArr.size()-1){
@@ -72,7 +72,7 @@ function createMenu(config){
 		//创建leftNavItemDom   
 		var leftNavItemDom = $('<li id="'+lid+'"></li>');
 		leftNavContainerDom.append(leftNavItemDom);
-		var leftNavItemUlDom = $('<ul class="nav nav-pills nav-stacked"></ul>');
+		var leftNavItemUlDom = $('<ul class="leftnav"></ul>');
 		leftNavItemDom.append(leftNavItemUlDom);
 		for(var j=0;j<leftNavList[i].length;j++){
 			//创建左侧导航子菜单项  需要包含创建右上navid did+rt+x 和 右下id did+rb+x 即需要定位到did
@@ -86,16 +86,16 @@ function createMenu(config){
 					//alert(11);
 					//定位
 					//当前为活动其余非活动样式
-					$(this).addClass("active").siblings().removeClass("active");
+					$(this).addClass("leftactive").siblings().removeClass("leftactive");
 					$("#"+$(this).attr("drtidMark")).removeClass("myli-close").addClass("myli-active").siblings().removeClass("myli-active").addClass("myli-close");
 					$("#"+$(this).attr("drbidMark")).removeClass("li-hidden").addClass("li-show").siblings().removeClass("li-show").addClass("li-hidden");
 					return;
 				}
 				$(this).attr("flag","open");
 				//当前项未被选中时生效
-				if(!$(this).hasClass("active")){
+				if(!$(this).hasClass("leftactive")){
 					//当前为活动其余非活动样式
-					$(this).addClass("active").siblings().removeClass("active");
+					$(this).addClass("leftactive").siblings().removeClass("leftactive");
 					//创建右上id
 					var drtid = $(this).attr("didMark")+"rt"+x;
 					//创建左上id
@@ -123,9 +123,9 @@ function createMenu(config){
 						//若为当前选中项 移除时将左侧导航active移除
 						var lnavItemDom = $("#"+$(this).parent().attr("lidMark"));
 						lnavItemDom.attr("flag","close");
-						if(lnavItemDom.hasClass("active")){
+						if(lnavItemDom.hasClass("leftactive")){
 							//alert("移除样式");
-							lnavItemDom.removeClass("active");
+							lnavItemDom.removeClass("leftactive");
 							//选中上一个标签
 							//alert($(this).parent().next());
 							if($(this).parent().next().length>0){

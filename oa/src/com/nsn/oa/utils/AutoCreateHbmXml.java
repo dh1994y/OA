@@ -31,7 +31,6 @@ public class AutoCreateHbmXml {
 	 * 
 	 * @param clazz
 	 */
-	@Test
 	public static void create(Class<?> clazz) {
 		//獲取全類名
 		String qualifiedName = clazz.getName();
@@ -93,8 +92,5 @@ public class AutoCreateHbmXml {
 		}
 		
 	}
-	
-	public static void main(String[] args) {
-		create(User.class);
-	}
+
 }

@@ -1,0 +1,64 @@
+一、设备基本信息维护
+1、表结构设计
+设备类型、设备名称、设备厂家、设备规格
+create table equipment(
+	id varchar(100) pramary key comment "id",
+	equipName varchar(255) comment "设备名称",
+	department varchar(100) comment "所属单位",
+	equipType varchar(255) comment "设备类型",
+	equipSpec varchar(255) comment "设备规格",
+	equipVender varchar(255) comment "设备厂家",
+	equipStatus varchar(100) comment "设备状态：正常/故障/报废",
+	comment text,#备注
+		
+	#----------维护字段-------------
+	createUser varchar(100) comment "创建者id",
+	createDate date comment "创建日期",
+	lastModifyUser varchar(100) comment "最后修改人id",
+	lastModifyDate date comment "最后修改日期",
+
+	#----------假删除 数据是核心-----------------
+	isDelete boolean comment "是否被删除"
+);
+2、equip_home.jsp
+提供添加按钮
+
+检索类型：
+输入框：设备名称
+下拉框：设备类型 设备规格 设备厂家 设备状态 所属单位
+
+表格显示
+名称 类型 规格 厂家   图标: 详情 修改 删除 维护（点击弹出添加维护内容） 报废（点击添加报废内容）
+
+详情：不包括假删除字段和id
+修改：不包括维护字段 假删除字段和id
+添加：不包括维护字段 假删除字段和id
+
+
+二、设备维护记录（维护故障设备）
+1、表结构设计
+create table equipment_maintenance(
+	id varchar(100) pramary key comment "id",
+	equipId varchar(100) comment "维护设备id",
+	maintenanceUser varchar(100) comment "维护人id",
+	maintenanceDate date comment "维护日期",
+	comment text,#备注
+);
+2、equip_maintenanceRecord.jsp
+仅提供查询功能
+查询条件
+	维护日期范围
+
+三、设备报废记录
+1、表结构设计
+create table equipment_reject(
+	id varchar(100) pramary key comment "id",
+	equipId varchar(100) comment "报废设备id",
+	maintenanceUser varchar(100) comment "报废人id",
+	maintenanceDate date comment "报废日期",
+	comment text,#备注	
+);
+2、equip_rejectRecord.jsp
+仅提供查询功能
+查询条件
+	维护日期范围

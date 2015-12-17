@@ -5,13 +5,49 @@
 采用表达式语言易访问的格式存储数据字典 如el/ognl  设计成 map或者javabean
 
 
-所属单位  组织结构管理
-设备类型  
-设备状态  正常 故障 报废
+所属单位  总裁办 组织部 技术部 公关部 人事部
 是否在职  在职 离职
 性别	  男   女
-故障类型   
+设备状态  正常 故障 报废
+设备类型  通讯 发电 办公 无线 天线
+设备厂家  华府 中影 普拓 科创
+设备规格  小型 中型 大型
+是否有效  有效 无效
 <dictionary>
+	<group key="dept" value="所属单位">
+		<item key="dept_01" value="总裁办"></item>
+		<item key="dept_02" value="组织部"></item>
+		<item key="dept_03" value="技术部"></item>
+		<item key="dept_04" value="公关部"></item>
+		<item key="dept_05" value="人事部"></item>
+	</group>
+	<group key="equipStatus" value="设备状态">
+		<item key="equipStatus_01" value="正常"></item>
+		<item key="equipStatus_02" value="故障"></item>
+		<item key="equipStatus_03" value="报废"></item>
+	</group>
+	<group key="equipType" value="设备类型">
+		<item key="equipType_01" value="通讯"></item>
+		<item key="equipType_02" value="发电"></item>
+		<item key="equipType_03" value="办公"></item>
+		<item key="equipType_04" value="无线"></item>
+		<item key="equipType_05" value="天线"></item>
+	</group>
+	<group key="equipVender" value="设备厂家">
+		<item key="equipVender_01" value="华普"></item>
+		<item key="equipVender_02" value="中影"></item>
+		<item key="equipVender_03" value="普拓"></item>
+		<item key="equipVender_04" value="科创"></item>
+	</group>
+	<group key="equipSpec" value="设备规格">
+		<item key="equipSpec_01" value="小型"></item>
+		<item key="equipSpec_02" value="中型"></item>
+		<item key="equipSpec_03" value="大型"></item>
+	</group>
+	<group key="isDelete" value="是否有效">
+		<item key="isDelete_01" value="有效"></item>
+		<item key="isDelete_02" value="无效"></item>
+	</group>
 	<group key="gender" value="性别">
 		<item key="gender_male" value="男"></item>
 		<item key="gender_female" value="女"></item>

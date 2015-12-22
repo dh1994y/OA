@@ -1,5 +1,6 @@
 一、用户登录
-
+	1、body加载时onload 让输入用户名获得焦点
+	userAction_login()
 二、一次性验证码
 
 三、记住用户名密码

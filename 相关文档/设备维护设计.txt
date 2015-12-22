@@ -54,8 +54,8 @@ create table equipment_maintenance(
 create table equipment_reject(
 	id varchar(100) pramary key comment "id",
 	equipId varchar(100) comment "报废设备id",
-	maintenanceUser varchar(100) comment "报废人id",
-	maintenanceDate date comment "报废日期",
+	rejectUser varchar(100) comment "报废人id",
+	rejectDate date comment "报废日期",
 	comment text,#备注	
 );
 2、equip_rejectRecord.jsp

@@ -31,6 +31,9 @@
       </bean> 
       <bean name="equipmentRejectAction" class="com.nsn.oa.web.action.EquipmentRejectAction" scope="prototype">
       	<property name="equipmentRejectService" ref="equipmentRejectService"/>
-      </bean>  	
+      </bean> 
+      <bean name="personalInfoAction" class="com.nsn.oa.web.action.PersonalInfoAction" scope="prototype">
+      	<property name="userService" ref="userService"/>
+      </bean>  
 </beans>
       

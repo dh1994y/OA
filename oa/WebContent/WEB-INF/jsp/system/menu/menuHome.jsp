@@ -21,7 +21,8 @@ a {
 }
 
 .queryCondition {
-	height: 68px;
+	height: 45px;
+	padding-top: 15px;
 	padding-left: 15px;
 }
 
@@ -60,24 +61,13 @@ select {
 <body>
 	<div class="container">
 		<div class="queryCondition">
-			设备类型：
-			<s:select list="%{#application.dict.dictMap.equipType}"></s:select>
-			设备规格：
-			<s:select list="%{#application.dict.dictMap.equipSpec}"></s:select>
-			设备厂家：
-			<s:select list="%{#application.dict.dictMap.equipVender}"></s:select>
-			设备状态：
-			<s:select list="%{#application.dict.dictMap.equipStatus}"></s:select>
-			所属单位：
-			<s:select list="%{#application.dict.dictMap.dept}"></s:select>
-			<div>
-				设备名称：<input type="text" name="equipName" />
-			</div>
+			菜单等级：
+			<s:select list="%{#application.dict.dictMap.menuLevel}"></s:select>
 		</div>
 		<div>
 			<div class="operator">
 				<input type="button" value="添加" class="btn"
-					onclick="window.location='${pageContext.request.contextPath}/equipment/equipmentAction_add.action'" />
+					onclick="window.location='${pageContext.request.contextPath}/system/menuAction_add.action'" />
 				<input type="button" value="查询" class="btn" />
 			</div>
 		</div>
@@ -85,43 +75,50 @@ select {
 			<table id="userTable">
 				<thead>
 					<tr>
-						<td>名称</td>
-						<td>类型</td>
-						<td>规格</td>
-						<td>厂家</td>
+						<td>菜单名</td>
+						<td>菜单等级</td>
+						<td>菜单序号</td>
+						<td>上级菜单</td>
+						<td>是否启用</td>
 						<td>操作</td>
 					</tr>
 				</thead>
 				<tr>
+					<td>我的面板</td>
 					<td>1</td>
-					<td>张三1</td>
-					<td>男</td>
-					<td>15058888888</td>
+					<td>1</td>
+					<td>无</td>
+					<td>是</td>
 					<td><a
-						href="${pageContext.request.contextPath}/equipment/equipmentAction_detail.action">详情&nbsp;</a><a
-						href="${pageContext.request.contextPath}/equipment/equipmentAction_edit.action">&nbsp;修改</a><a
-						href="#">&nbsp;删除</a> <a
-						href="${pageContext.request.contextPath}/equipment/equipmentMaintenanceAction_add.action">&nbsp;维护</a>
+						href="${pageContext.request.contextPath}/system/menu/menuAction_detail.action">详情&nbsp;</a>
 						<a
-						href="${pageContext.request.contextPath}/equipment/equipmentRejectAction_add.action">&nbsp;报废</a></td>
+						href="${pageContext.request.contextPath}/system/menu/menuAction_edit.action">编辑&nbsp;</a>
+					</td>
 				</tr>
 				<tr>
+					<td>系统管理</td>
 					<td>1</td>
-					<td>张三1</td>
-					<td>男</td>
-					<td>15058888888</td>
+					<td>2</td>
+					<td>无</td>
+					<td>是</td>
 					<td><a
-						href="${pageContext.request.contextPath}/equipment/equipmentAction_detail.action">详情&nbsp;</a><a
-						href="${pageContext.request.contextPath}/equipment/equipmentAction_edit.action">&nbsp;修改</a><a
-						href="#">&nbsp;删除</a> <a
-						href="${pageContext.request.contextPath}/equipment/equipmentMaintenanceAction_add.action">&nbsp;维护</a>
+						href="${pageContext.request.contextPath}/system/menu/menuAction_detail.action">详情&nbsp;</a>
 						<a
-						href="${pageContext.request.contextPath}/equipment/equipmentRejectAction_add.action">&nbsp;报废</a></td>
+						href="${pageContext.request.contextPath}/system/menu/menuAction_edit.action">编辑&nbsp;</a>
+					</td>
 				</tr>
-
-
-
-
+				<tr>
+					<td>菜单管理</td>
+					<td>2</td>
+					<td>2</td>
+					<td>系统管理</td>
+					<td>是</td>
+					<td><a
+						href="${pageContext.request.contextPath}/system/menu/menuAction_detail.action">详情&nbsp;</a>
+						<a
+						href="${pageContext.request.contextPath}/system/menu/menuAction_edit.action">编辑&nbsp;</a>
+					</td>
+				</tr>
 			</table>
 		</div>
 	</div>

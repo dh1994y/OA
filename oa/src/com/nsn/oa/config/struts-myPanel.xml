@@ -21,5 +21,19 @@
 		</action>
 	</package>
 	
+	<package name="/personal" namespace="/myPanel" extends="struts-default">
+		<action name="personalInfoAction_*" class="personalInfoAction" method="{1}">
+			<result name="home">
+				/WEB-INF/jsp/myPanel/personalInfo.jsp
+			</result>
+			<result name="edit">
+				/WEB-INF/jsp/myPanel/personalInfoEdit.jsp
+			</result>
+			<result name="pwEdit">
+				/WEB-INF/jsp/myPanel/pwEdit.jsp
+			</result>
+		</action>
+	</package>
+	
 
 </struts>

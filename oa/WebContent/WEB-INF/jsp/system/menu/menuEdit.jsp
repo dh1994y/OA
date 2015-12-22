@@ -61,55 +61,50 @@ a {
 </style>
 </head>
 <body>
-	<div class="title">添加设备页面</div>
+	<div class="title">编辑菜单页面</div>
 	<div class="container">
 		<div class="back">
 			<a
-				href="${pageContext.request.contextPath}/equipment/equipmentAction_home.action">返回设备记录主页</a>
+				href="${pageContext.request.contextPath}/system/menu/menuAction_home.action">返回菜单记录主页</a>
 		</div>
 		<div class="form">
 			<form id="form"
-				action="${pageContext.request.contextPath}/equipment/equipmentAction_save.action"
+				action="${pageContext.request.contextPath}/system/menu/menuAction_save.action"
 				method="post">
 				<div>
-					<span>*&nbsp;</span>设备名称：<input type="text" name="equipName" /><span
-						id="ss"></span>
-				</div>
-				<div>
-					<span>*&nbsp;</span>设备类型：
-					<s:select list="%{#application.dict.dictMap.equipType}"
-						name="equipType"></s:select>
+					<span>*&nbsp;</span>菜单名：
+					<input type="text" name="name" />
 					<span></span>
 				</div>
 				<div>
-					<span>*&nbsp;</span>设备规格：
-					<s:select list="%{#application.dict.dictMap.equipSpec}"
-						name="equipSpec"></s:select>
+					<span>*&nbsp;</span>菜单等级：
+					<s:select list="%{#application.dict.dictMap.menuLevel}"
+						name="level"></s:select>
 					<span></span>
 				</div>
 				<div>
-					<span>*&nbsp;</span>设备厂家：
+					<span>*&nbsp;</span>菜单序号：
+					<input type="text" name="orderValue">
+					<span></span>
+				</div>
+				<div>
+					<span>*&nbsp;</span>上级菜单：
 					<s:select list="%{#application.dict.dictMap.equipVender}"
-						name="equipVender"></s:select>
+						name="parentId"></s:select>
 					<span></span>
 				</div>
 				<div>
-					<span>*&nbsp;</span>设备状态：
-					<s:select list="%{#application.dict.dictMap.equipStatus}"
-						name="equipStatus"></s:select>
+					<span>*&nbsp;</span>是否启用：
+					是<input type="radio" name="isUse" value="1">&nbsp;否<input type="radio" name="isUse" value="0">
 					<span></span>
 				</div>
 				<div>
-					<span>*&nbsp;</span>所属单位：
-					<s:select list="%{#application.dict.dictMap.dept}" name="department"></s:select>
+					<span>*&nbsp;</span>访问路径：<br/>
+					<textarea rows="5" cols="50" name="url"></textarea>
 					<span></span>
 				</div>
 				<div>
-					备注：<br/>
-					<textarea rows="5" cols="50"></textarea>
-				</div>
-				<div>
-					<input type="submit" value="添加" class="btn" />
+					<input type="submit" value="修改" class="btn" />
 				</div>
 			</form>
 		</div>
@@ -127,20 +122,20 @@ a {
 		$("#form").validate({
 			//debug : true,
 			rules : {
-				equipName : "required",
-				equipType : "required",
-				equipSpec : "required",
-				equipVender : "required",
-				equipStatus : "required",
-				department : "required"
+				name : "required",
+				level : "required",
+				orderValue : "required",
+				parentId : "required",
+				isUse : "required",
+				url : "required"
 			},
 			messages : {
-				equipName : "请输入设备名称",
-				equipType : "请选择设备类型",
-				equipSpec : "请选择设备型号",
-				equipVender : "请选择设备厂家",
-				equipStatus : "请选择设备状态",
-				department : "请选择设备所属部门"
+				name : "请输入菜单名称",
+				level : "请选择菜单等级",
+				orderValue : "请输入菜单序号",
+				parentId : "请选择上级菜单",
+				isUse : "请选择是否启用",
+				url : "请输入映射路径"
 			},
 			errorPlacement : function(error, element) {
 				error.appendTo(element.next());

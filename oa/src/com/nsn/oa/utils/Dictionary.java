@@ -63,7 +63,7 @@ public class Dictionary {
 				groupMap.put(groupKey, groupValue);
 				List<Element> itemList = groupElement.elements();
 				Map<String,String> tempMap = new LinkedHashMap<>();
-				tempMap.put(null, "====");
+				tempMap.put(null, "===");
 				for (Element itemElement : itemList) {
 					String itemKey = itemElement.attributeValue("key");
 					String itemValue = itemElement.attributeValue("value");

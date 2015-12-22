@@ -19,9 +19,22 @@ public class MenuAction extends ActionSupport implements ModelDriven<Menu>{
 	private MenuService menuService;
 	
 	public String home(){
-		User user = new User();
-		user.setId("123");
-		ActionContext.getContext().getSession().put("user", user);
+		return "home";
+	}
+	
+	public String add(){
+		return "add";
+	}
+	
+	public String edit(){
+		return "edit";
+	}
+	
+	public String detail(){
+		return "detail";
+	}
+	
+	public String save(){
 		return "home";
 	}
 	

@@ -42,4 +42,8 @@
 		<item key="isDuty_on" value="在职"></item>
 		<item key="isDuty_off" value="离职"></item>
 	</group>
+	<group key="menuLevel" value="菜单等级">
+		<item key="1" value="一级"></item>
+		<item key="2" value="二级"></item>
+	</group>
 </dictionary>

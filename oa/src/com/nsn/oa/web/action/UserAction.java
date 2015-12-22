@@ -20,6 +20,26 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	private String checkNumber;
 	private String isRemember;
 	
+	public String home(){
+		return "home";
+	}
+	
+	public String add(){
+		return "add";
+	}
+	
+	public String edit(){
+		return "edit";
+	}
+	
+	public String detail(){
+		return "detail";
+	}
+	
+	public String save(){
+		return "home";
+	}
+	
 	public String login(){
 		
 		//合法性校验

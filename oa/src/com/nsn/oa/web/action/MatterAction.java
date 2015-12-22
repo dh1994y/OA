@@ -18,6 +18,10 @@ public class MatterAction extends ActionSupport implements ModelDriven<Matter>{
 	private Matter matter = new Matter();
 	private MatterService matterService;
 
+	public String test(){
+		return "test";
+	}
+	
 	public String home(){
 		storeMatterInRequest();
 		return "home";

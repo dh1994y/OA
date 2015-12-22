@@ -1,52 +1,98 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>OA登录</title>
 
-<link href="${pageContext.request.contextPath}/resource/login/css/main.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+
+	input:focus{
+		border: 1px solid green;
+	}
+	body {
+		background-color: #F1F4F5;
+		font-family: Tahoma, Verdana, STHeiTi, simsun, sans-serif;
+		font-size: 20px;
+	}
+	
+	.head {
+		height: 50px;
+	}
+	
+	.title {
+		text-align: center;
+		color: deepskyblue;
+	}
+	
+	.login-box {
+		width: 500px;
+		height: 300px;
+		box-shadow: #CFD6DE 0px 5px 5px 0px;
+		margin: 0px auto;
+		background-color: #FFFFFF;
+		border-radius: 25px 25px 15px 15px;
+		padding-top: 25px;
+	}
+	
+	.errorMessage {
+		color: red;
+		height: 35px;
+		text-align: center;
+	}
+	.row{
+		margin: 25px 0px;
+		text-align: center;
+	}
+	.row label{
+		width: 100px;
+		display: inline-block;
+		text-align: right;
+	}
+	.text{
+		width: 200px;
+	}
+	.pwd{
+		width: 200px;
+	}
+	.ckNum{
+		width: 100px;
+	}
+	.ckImg{
+		height: 25px; 
+		width: 100px;
+		padding-left: 5px;
+	}
+</style>
 
 </head>
 <body>
 
-
-<div class="login">
-    <div class="box png">
-		<div class="logo png"></div>
-		<div class="input">
-			<div class="log">
-				<form action="${pageContext.request.contextPath}/system/menu/menuAction_home.action" method="post">
-					<div class="name">
-						<label>用户名</label><input type="text" class="text" id="value_1" placeholder="用户名" name="username" tabindex="1">
-					</div>
-					<div class="pwd">
-						<label>密　码</label><input type="password" class="text" id="value_2" placeholder="密码" name="password" tabindex="2">
-						<input type="submit" class="submit" tabindex="3" value="登录">
-						<div class="check"></div>
-					</div>
-					<div class="tip"></div>
-				</form>
-			</div>
-		</div>
+	<div class="head"></div>
+	<div class="title">
+		<h1>OA协同办公平台登录</h1>
 	</div>
-    <div class="air-balloon ab-1 png"></div>
-	<div class="air-balloon ab-2 png"></div>
-    <div class="footer"></div>
-</div>
+	<div class="login-box">
+		<div class="errorMessage">
+			<s:actionerror/>	
+		</div>
+		<form action="system/user/userAction_login.action" method="post" class="form">
+			<div class="row">
+				<label>用户名：</label><input type="text" name="account" placeholder="用户名" class="text" value="${cookie.accountCookie.value}"/>
+			</div>
+			<div class="row">
+				<label>密码：</label><input type="password" name="password" placeholder="密码" class="pwd" value="${cookie.passwordCookie.value}"/>
+			</div>
+			<div class="row">
+				<label>验证码：</label><input type="text" name="checkNumber" placeholder="验证码" class="ckNum"/><img src="${pageContext.request.contextPath}/resource/utils/checkNumber.jsp" class="ckImg" onclick="this.src='${pageContext.request.contextPath}/resource/utils/checkNumber.jsp?timestamp='+new Date().getTime()"/>
+			</div>
+			<div class="row">
+				<input type="submit" value="登录"/> <input type="checkbox" name="isRemember" value="yes"/>记住我
+			</div>
+		</form>
+	</div>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resource/login/js/jQuery.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resource/login/js/fun.base.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resource/login/js/script.js"></script>
-
-
-<!--[if IE 6]>
-<script src="js/DD_belatedPNG.js" type="text/javascript"></script>
-<script>DD_belatedPNG.fix('.png')</script>
-<![endif]-->
-<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
-<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
-</div>
 </body>
 </html>

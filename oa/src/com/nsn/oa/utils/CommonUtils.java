@@ -15,7 +15,7 @@ public class CommonUtils {
 			if(obj==null){
 				return true;
 			}else if(obj instanceof String){
-				if(((String) obj).length()<=0){
+				if(((String) obj).trim().length()<=0){
 					return true;
 				}
 			}

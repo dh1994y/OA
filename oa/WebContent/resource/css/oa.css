@@ -57,6 +57,11 @@
 	}
 	#page-head-right span{
 		margin-left: 20px;
+		margin-right: 20px;
+	}
+	#page-head-right a{
+		color: white;
+		margin-right: 20px;
 	}
 	/* 导航条 */
 	#page-nav{

@@ -23,5 +23,14 @@
       <bean name="userService" class="com.nsn.oa.service.UserService">
       	<property name="userDao" ref="userDao"/>
       </bean>
+      <bean name="equipmentService" class="com.nsn.oa.service.EquipmentService">
+      	<property name="equipmentDao" ref="equipmentDao"/>
+      </bean>
+      <bean name="equipmentMaintenanceService" class="com.nsn.oa.service.EquipmentMaintenanceService">
+      	<property name="equipmentMaintenanceDao" ref="equipmentMaintenanceDao"/>
+      </bean>
+      <bean name="equipmentRejectService" class="com.nsn.oa.service.EquipmentRejectService">
+      	<property name="equipmentRejectDao" ref="equipmentRejectDao"/>
+      </bean>
 </beans>
       

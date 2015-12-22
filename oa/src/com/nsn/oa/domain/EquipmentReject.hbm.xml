@@ -1,0 +1,17 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 定义映射类 表 -->
+	<class name="com.nsn.oa.domain.EquipmentReject" table="equipment_reject">
+		<!-- 定义主键映射 -->
+		<id name="id" column="id">
+			<generator class="uuid"/>
+		</id>
+		<!-- 定义字段映射 -->
+		<property name="equipId" column="equipId"/>
+		<property name="rejectUser" column="rejectUser"/>
+		<property name="rejectDate" column="rejectDate"/>
+		<property name="comment" column="comment"/>
+	</class>
+</hibernate-mapping>

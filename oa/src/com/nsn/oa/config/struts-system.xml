@@ -4,18 +4,25 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	
-	<package name="menu" namespace="/system" extends="struts-default">
+	<package name="/menu" namespace="/system" extends="struts-default">
 		<action name="menuAction_*" class="menuAction" method="{1}">
 			<result name="home">
 				/WEB-INF/jsp/home.jsp
 			</result>
 		</action>
+	</package>
+	<package name="/user" namespace="/system" extends="struts-default">
 		<action name="userAction_*" class="userAction" method="{1}">
 			<result name="home">
-				/WEB-INF/jsp/system/userHome.jsp
+				/WEB-INF/jsp/system/user/userHome.jsp
+			</result>
+			<result name="loginSucc">
+				/WEB-INF/jsp/home.jsp
+			</result>
+			<result name="loginError">
+				/WEB-INF/jsp/login.jsp
 			</result>
 		</action>
 	</package>
-	
 
 </struts>

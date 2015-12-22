@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	
+	<package name="/" namespace="/equipment" extends="struts-default">
+		<action name="equipmentAction_*" class="equipmentAction" method="{1}">
+			<result name="home">
+				/WEB-INF/jsp/equipment/equipHome.jsp
+			</result>
+			<result name="edit">
+				/WEB-INF/jsp/equipment/equipEdit.jsp
+			</result>
+			<result name="detail">
+				/WEB-INF/jsp/equipment/equipDetail.jsp
+			</result>
+			<result name="add">
+				/WEB-INF/jsp/equipment/equipAdd.jsp
+			</result>
+			<result name="saveSucc">
+				/WEB-INF/jsp/equipment/equipHome.jsp
+			</result>
+		</action>
+		
+		<action name="equipmentMaintenanceAction_*" class="equipmentMaintenanceAction" method="{1}">
+			<result name="home">
+				/WEB-INF/jsp/equipment/equipMaintenanceRecord.jsp
+			</result>
+			<result name="detail">
+				/WEB-INF/jsp/equipment/equipMaintenanceDetail.jsp
+			</result>
+			<result name="add">
+				/WEB-INF/jsp/equipment/equipMaintenanceAdd.jsp
+			</result>
+		</action>
+		
+		<action name="equipmentRejectAction_*" class="equipmentRejectAction" method="{1}">
+			<result name="home">
+				/WEB-INF/jsp/equipment/equipRejectRecord.jsp
+			</result>
+			<result name="detail">
+				/WEB-INF/jsp/equipment/equipRejectDetail.jsp
+			</result>
+			<result name="add">
+				/WEB-INF/jsp/equipment/equipRejectAdd.jsp
+			</result>
+		</action>
+	</package>
+	
+
+</struts>

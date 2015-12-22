@@ -11,4 +11,5 @@
 	<!-- 引入配置包 -->
 	<include file="com/nsn/oa/config/struts-system.xml"/>
 	<include file="com/nsn/oa/config/struts-myPanel.xml"/>
+	<include file="com/nsn/oa/config/struts-equipment.xml"/>
 </struts>

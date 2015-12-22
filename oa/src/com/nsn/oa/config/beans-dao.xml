@@ -21,5 +21,9 @@
       <bean name="menuDao" class="com.nsn.oa.dao.impl.MenuDaoImpl" parent="baseDao"/>
       <bean name="matterDao" class="com.nsn.oa.dao.impl.MatterDaoImpl" parent="baseDao"/>
       <bean name="userDao" class="com.nsn.oa.dao.impl.UserDaoImpl" parent="baseDao"/>
+      <bean name="equipmentDao" class="com.nsn.oa.dao.impl.EquipmentDaoImpl" parent="baseDao"/>
+      <bean name="equipmentMaintenanceDao" class="com.nsn.oa.dao.impl.EquipmentMaintenanceDaoImpl" parent="baseDao"/>
+      <bean name="equipmentRejectDao" class="com.nsn.oa.dao.impl.EquipmentRejectDaoImpl" parent="baseDao"/>
+      
 </beans>
       

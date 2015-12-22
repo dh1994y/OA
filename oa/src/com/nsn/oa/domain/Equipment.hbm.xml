@@ -1,0 +1,25 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 定义映射类 表 -->
+	<class name="com.nsn.oa.domain.Equipment" table="equipment">
+		<!-- 定义主键映射 -->
+		<id name="id" column="id">
+			<generator class="uuid"/>
+		</id>
+		<!-- 定义字段映射 -->
+		<property name="equipName" column="equipName"/>
+		<property name="department" column="department"/>
+		<property name="equipType" column="equipType"/>
+		<property name="equipSpec" column="equipSpec"/>
+		<property name="equipVender" column="equipVender"/>
+		<property name="equipStatus" column="equipStatus"/>
+		<property name="comment" column="comment"/>
+		<property name="createUser" column="createUser"/>
+		<property name="createDate" column="createDate"/>
+		<property name="lastModifyUser" column="lastModifyUser"/>
+		<property name="lastModifyDate" column="lastModifyDate"/>
+		<property name="isDelete" column="isDelete"/>
+	</class>
+</hibernate-mapping>

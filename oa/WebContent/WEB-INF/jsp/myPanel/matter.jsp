@@ -3,12 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"
-	charset="UTF-8">
-<!-- 引入 Bootstrap css-->
-<link
-	href="${pageContext.request.contextPath}/resource/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
+<meta	charset="UTF-8">
 </head>
 <body>
 	<div>

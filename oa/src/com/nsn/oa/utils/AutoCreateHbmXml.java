@@ -10,6 +10,8 @@ import java.lang.reflect.Field;
 
 import org.junit.Test;
 
+import com.nsn.oa.domain.EquipmentMaintenance;
+import com.nsn.oa.domain.EquipmentReject;
 import com.nsn.oa.domain.User;
 
 /**
@@ -68,6 +70,7 @@ public class AutoCreateHbmXml {
 			}
 			writer.write("\t</class>\n");
 			writer.write("</hibernate-mapping>");
+			System.out.println("=========创建完成==========");
 		}catch(Exception e){
 			throw new RuntimeException("寫文件異常"+e);
 		}finally{
@@ -90,7 +93,8 @@ public class AutoCreateHbmXml {
 				}
 			}
 		}
-		
 	}
-
+	public static void main(String[] args) {
+		create(User.class);
+	}
 }

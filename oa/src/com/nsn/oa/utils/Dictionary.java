@@ -8,6 +8,7 @@ import java.util.Map;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+import org.junit.Test;
 
 /**
  * 单例的数据字典类
@@ -62,6 +63,7 @@ public class Dictionary {
 				groupMap.put(groupKey, groupValue);
 				List<Element> itemList = groupElement.elements();
 				Map<String,String> tempMap = new LinkedHashMap<>();
+				tempMap.put(null, "====");
 				for (Element itemElement : itemList) {
 					String itemKey = itemElement.attributeValue("key");
 					String itemValue = itemElement.attributeValue("value");
@@ -84,6 +86,7 @@ public class Dictionary {
 		System.out.println("=============初始化数据字典结束===============");
 	}
 	
+	@Test
 	public static synchronized void reload(){
 		if(instance==null){
 			getInstance();
@@ -115,6 +118,5 @@ public class Dictionary {
 	public void setItemMap(Map<String, String> itemMap) {
 		this.itemMap = itemMap;
 	}
-	
 	
 }

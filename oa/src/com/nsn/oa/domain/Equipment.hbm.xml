@@ -10,6 +10,7 @@
 		</id>
 		<!-- 定义字段映射 -->
 		<property name="equipName" column="equipName"/>
+		<property name="equipNum" column="equipNum"/>
 		<property name="department" column="department"/>
 		<property name="equipType" column="equipType"/>
 		<property name="equipSpec" column="equipSpec"/>

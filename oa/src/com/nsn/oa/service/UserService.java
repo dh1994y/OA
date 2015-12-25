@@ -5,6 +5,8 @@ import java.util.List;
 import com.nsn.oa.dao.IUserDao;
 import com.nsn.oa.dao.utils.Conditions;
 import com.nsn.oa.domain.User;
+import com.nsn.oa.utils.DataTablesPage;
+import com.nsn.oa.utils.Dictionary;
 
 /**
  * 用戶模塊業務邏輯
@@ -28,6 +30,31 @@ public class UserService {
 			return userList.get(0);
 		}
 		return null;
+	}
+
+	public void addUser(User user) {
+		
+		userDao.addOrUpdate(user);
+	}
+
+	public boolean checkAccountUnique(Conditions conditions) {
+		return userDao.checkUnique(conditions);
+	}
+
+	public void page(DataTablesPage<User> page, Conditions conditions) {
+		userDao.page(page, conditions);
+	}
+
+	public void update(User user) {
+		userDao.addOrUpdate(user);
+	}
+
+	public User findUserById(String id) {
+		return userDao.findById(id);
+	}
+
+	public void deleteUser(User delUser) {
+		userDao.addOrUpdate(delUser);
 	}
 	
 }

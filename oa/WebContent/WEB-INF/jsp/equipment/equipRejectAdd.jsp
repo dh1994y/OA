@@ -30,6 +30,7 @@ a {
 }
 
 .form {
+	padding-top: 35px;
 	clear: both;
 	height: 450px;
 }
@@ -72,16 +73,11 @@ a {
 				action="${pageContext.request.contextPath}/equipment/equipment/equipmentRejectAction_save.action"
 				method="post">
 				<div>
-					<span>*&nbsp;</span>设备名称：xxx
+					<input type="hidden" value="<s:property value="%{id}"/>" name="equipId"/>
+					<span>*&nbsp;</span>设备名称：<s:property value="equipName"/>
 				</div>
 				<div>
-					<span>*&nbsp;</span>设备ID：xxx
-				</div>
-				<div>
-					<span>*&nbsp;</span>报废人：xxx
-				</div>
-				<div>
-					<span>*&nbsp;</span>报废日期：xxx
+					<span>*&nbsp;</span>报废人：<s:property value="%{#session.user.username}"/>
 				</div>
 				<div>
 					<span>*&nbsp;</span>备注：<span></span><br/>

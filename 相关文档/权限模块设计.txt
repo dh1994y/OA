@@ -1,0 +1,52 @@
+
+
+权限模块设计
+
+用户   
+
+角色
+create table role(
+	id varchar(100) primary key ,
+	roleName varchar(100) unique comment "角色名"
+);	
+
+权限（此处使用菜单） 根据模块的action路径判断
+
+
+用户可以有多个角色，一个角色可以对应多个用户   用户 n ---角色 n 多对多
+用户--角色关联表
+create table userRole(
+	userId varchar(100) comment "用户id",
+	roleId varchar(100) comment "角色id",
+	foreign key(userId) references user(id) on delete cascade on update cascade,
+	foreign key(roleId) references role(id) on delete cascade on update cascade
+);
+
+角色可以有多个权限，一个权限可以对应多个角色   角色 n ---权限 n 多对多
+角色--权限关联表
+create table roleMenu(
+	roleId varchar(100) comment "角色id",
+	menuId varchar(100) comment "菜单id",
+	foreign key(roleId) references role(id) on delete cascade on update cascade,
+	foreign key(menuId) references menu(id) on delete cascade on update cascade
+);
+
+
+在用户的角度：
+	一般通过用户获取用户拥有角色，通过遍历角色判断该用户有无该权限
+	
+	User.hbm.xml
+		配置单项一对多关联角色   Set
+		
+	Role.hbm.xml
+		配置单向一对多关联权限   Set
+
+对于权限验证的考虑（双重验证）：
+	第一重：
+		用户登录后，获取所有权限菜单，解析生成菜单配置config对象传输到前台，指定角色只能看到对应模块
+	第二重：
+		使用拦截器验证权限路径，避免用户浏览器直接输入action地址访问
+
+
+
+

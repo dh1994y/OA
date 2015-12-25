@@ -61,20 +61,22 @@ select {
 	<div class="container">
 		<div class="queryCondition">
 			所属单位：
-			<s:select list="%{#application.dict.dictMap.dept}"></s:select>
+			<s:select list="%{#application.dict.dictMap.dept}" emptyOption="true" id="department"></s:select>
 			用户性别：
-			<s:select list="%{#application.dict.dictMap.gender}"></s:select>
+			<s:select list="%{#application.dict.dictMap.gender}"
+				emptyOption="true" id="gender"></s:select>
 			是否在职：
-			<s:select list="%{#application.dict.dictMap.isDuty}"></s:select>
+			<s:select list="%{#application.dict.dictMap.isDuty}"
+				emptyOption="true" id="isDuty"></s:select>
 			<div>
-				用户名称：<input type="text" name="username" />
+				用户名称：<input type="text" id="username"/>
 			</div>
 		</div>
 		<div>
 			<div class="operator">
 				<input type="button" value="添加" class="btn"
-					onclick="window.location='${pageContext.request.contextPath}/system/user/userAction_add.action'" />
-				<input type="button" value="查询" class="btn" />
+					onclick="window.location='${pageContext.request.contextPath}/system/user/userAction_userAdd.action'" />
+				<input type="button" value="查询" class="btn" onclick="query()" />
 			</div>
 		</div>
 		<div class="dataTable">
@@ -84,73 +86,116 @@ select {
 						<td>姓名</td>
 						<td>性别</td>
 						<td>帐号</td>
-						<td>年龄</td>
 						<td>所属单位</td>
 						<td>是否在职</td>
 						<td>手机</td>
 						<td>操作</td>
 					</tr>
 				</thead>
-				<tr>
-					<td>张三</td>
-					<td>男</td>
-					<td>zs</td>
-					<td>21</td>
-					<td>总裁办</td>
-					<td>是</td>
-					<td>15058888888</td>
-					<td><a
-						href="${pageContext.request.contextPath}/system/user/userAction_detail.action">详情&nbsp;</a><a
-						href="${pageContext.request.contextPath}/system/user/userAction_edit.action">&nbsp;修改</a><a
-						href="#">&nbsp;删除</a> 
-				</tr>
-				<tr>
-					<td>李四</td>
-					<td>男</td>
-					<td>ls</td>
-					<td>21</td>
-					<td>技术部</td>
-					<td>是</td>
-					<td>15068888888</td>
-					<td><a
-						href="${pageContext.request.contextPath}/system/user/userAction_detail.action">详情&nbsp;</a><a
-						href="${pageContext.request.contextPath}/system/user/userAction_edit.action">&nbsp;修改</a><a
-						href="#">&nbsp;删除</a> 
-				</tr>
-
-
-
-
+				
 			</table>
 		</div>
 	</div>
 	<!-- 引入datatables相关文件 -->
 
 	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/resource/js/jquery-2.1.1.min.js"></script>
+		src="${pageContext.request.contextPath}/resource/dataTables/js/jquery.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/resource/dataTables/js/jquery.dataTables.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/resource/dataTables/fnReloadAjax.js"></script>
 	<script type="text/javascript">
-		$("#userTable").dataTable({
-			bFilter : false,
-			bSort : false,
-			bLengthChange : false,
-			oLanguage : {
-				"sLengthMenu" : "每页显示 _MENU_条",
-				"sZeroRecords" : "没有找到符合条件的数据",
-				"sProcessing" : "&lt;img src=’./loading.gif’ /&gt;",
-				"sInfo" : "当前第 _START_ - _END_ 条　共计 _TOTAL_ 条",
-				"sInfoEmpty" : "木有记录",
-				"sInfoFiltered" : "(从 _MAX_ 条记录中过滤)",
-				"sSearch" : "搜索：",
-				"oPaginate" : {
-					"sFirst" : "首页",
-					"sPrevious" : "前一页",
-					"sNext" : "后一页",
-					"sLast" : "尾页"
-				}
+	
+		var options = {
+			"iDisplayLength": 5,
+			"oLanguage" : {
+				"sUrl" : "/oa/resource/dataTables/zh_CN.txt"
+			},
+			"bProcessing" : true,//打开进度栏
+			"columns" : [ 
+			    {"data" : "username"}, 
+			    {"data" : "gender"}, 
+			    {"data" : "account"}, 
+			    {"data" : "units"}, 
+			    {"data" : "isDuty"},
+			    {"data" : "mobilePhone"},
+			    {"data" : "isDuty"}
+			],
+			"bPaginate" : true, //翻页功能
+			"bLengthChange" : false, //改变每页显示数据数量
+			"bFilter" : false, //过滤功能
+			"bInfo" : true,//页脚信息
+			"bSort" : false, //排序功能
+			"bStateSave" : false,//状态保存开关,使用cookie记录当前页码,即是页面关闭,重新打开时还是上次的页码
+
+			//ajax服务器分页逻辑
+			bServerSide : true, //开启服务器支持
+			sAjaxSource : "${pageContext.request.contextPath }/system/userAction_page.action?timestamp="
+					+ new Date().getTime(),//指定请求路径
+			fnRowCallback : function(nRow, aData, iDisplayIndex) {
+				var deleteUrl = "${pageContext.request.contextPath }/system/userAction_delete.action";
+				var detailUrl = "${pageContext.request.contextPath }/system/userAction_userDetail.action";
+				var updateUrl = "${pageContext.request.contextPath }/system/userAction_userEdit.action";
+				var content = "<a href='" + detailUrl + "?id="
+						+ aData.id + "'>详情</a>&nbsp;<a href='" + updateUrl
+						+ "?id=" + aData.id + "'>修改</a>&nbsp;<a id='del' href='javascript:void(0)' url='"
+						+ deleteUrl + "?id=" + aData.id + "'>删除</a>"
+				//把一行的最后一个单元格里的内容替换为删除超链接 和 修改超链接
+				$(":last-child", nRow).html(content);
+				$(":last-child", $(":last-child", nRow)).click(function(){
+					if(confirm("是否确认删除？")){
+						var url = $(this).attr("url");
+						$.ajax({
+							url: url,
+				    	    async: false,//改为同步方式
+			    	        type: "GET",
+			    	        success: function (data) {
+			    	        	query();
+				    		}
+						});
+					}
+				});
+				return nRow;
+			},
+			fnServerParams : function(aoData) {
+				var username = $("#username").val();
+				var department = $("#department").val();
+				var gender = $("#gender").val();
+				var isDuty = $("#isDuty").val();
+				aoData.push({
+					"name" : "username",
+					"value" : username,
+					
+				});
+				aoData.push({
+					"name" : "units",
+					"value" : department
+				});
+				aoData.push({
+					"name" : "gender",
+					"value" : gender
+				});
+				aoData.push({
+					"name" : "isDuty",
+					"value" : isDuty
+				});
+			},
+			//需要从服务器请求数据时调用
+			fnServerData : function(sSource, aoData, fnCallback, oSettings) {
+				oSettings.jqXHR = $.ajax({
+					"dataType" : 'json',
+					"type" : "POST",
+					"url" : sSource,
+					"data" : aoData,
+					"success" : fnCallback
+				});
 			}
-		});
+		}
+		var pageTables = $("#userTable").dataTable(options);
+		function query(){
+			pageTables.fnReloadAjax();
+		}
+		
 	</script>
 </body>
 </html>

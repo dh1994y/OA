@@ -40,7 +40,8 @@ public class MenuAction extends ActionSupport implements ModelDriven<Menu>{
 	
 	public void getMenuConfig(){
 		//获取一级菜单列表
-		MenuConfig config = menuService.getMenuConfig();
+		//MenuConfig config = menuService.getMenuConfig();
+		MenuConfig config = (MenuConfig) ServletActionContext.getServletContext().getAttribute("config");
 		//通过ServletActionContext解耦servlet
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setCharacterEncoding("UTF-8");

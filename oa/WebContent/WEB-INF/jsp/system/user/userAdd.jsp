@@ -79,7 +79,7 @@ a {
 		</div>
 		<div class="form">
 			<form id="form"
-				action="${pageContext.request.contextPath}/system/user/userAction_save.action"
+				action="${pageContext.request.contextPath}/system/user/userAction_add.action"
 				method="post">
 				<div class="inline-div">
 					<div class="block-div">
@@ -89,12 +89,12 @@ a {
 					</div>
 					<div class="block-div">
 						<span>*&nbsp;</span>性别：
-						<s:select list="%{#application.dict.dictMap.gender}" name="gender"></s:select>
+						<s:select list="%{#application.dict.dictMap.gender}" emptyOption="true" name="gender"></s:select>
 						<span></span>
 					</div>
 					<div class="block-div">
 						<span>*&nbsp;</span>手机：
-						<input type="text" name="mobilephone" />
+						<input type="text" name="mobilePhone" />
 						<span></span>
 					</div>
 					<div class="block-div">
@@ -104,23 +104,23 @@ a {
 					</div>
 					<div class="block-div">
 						<span>*&nbsp;</span>所属部门：
-						<s:select list="%{#application.dict.dictMap.dept}" name="department"></s:select>
+						<s:select list="%{#application.dict.dictMap.dept}" emptyOption="true" name="units"></s:select>
 						<span></span>
 					</div>
 				</div>
 				<div class="inline-div">
 					<div class="block-div">
 						<span>*&nbsp;</span>帐户名：
-						<input type="text" name="account" />
+						<input type="text" name="account" id="account"/>
 						<span></span>
 					</div>
 					<div class="block-div">
 						<span>*&nbsp;</span>出生日期：
-						<input type="text" name="brithday" />
+						<input type="text" name="birthday" onclick="WdatePicker()" class="Wdate"/>
 						<span></span>
 					</div>
 					<div class="block-div">
-						<span>*&nbsp;</span>电话：
+						<span>&nbsp;&nbsp;</span>电话：
 						<input type="text" name="telephone" />
 						<span></span>
 					</div>
@@ -131,13 +131,13 @@ a {
 					</div>
 					<div class="block-div">
 						<span>*&nbsp;</span>入职时间：
-						<input type="text" name="onDutyDate" />
+						<input type="text" name="onDutyDate" onclick="WdatePicker()" class="Wdate"/>
 						<span></span>
 					</div>
 				</div>
 				<div>
 					备注：<br/>
-					<textarea rows="5" cols="50"></textarea>
+					<textarea rows="5" cols="50" name="comment"></textarea>
 				</div>
 				<div>
 					<input type="submit" value="添加" class="btn" />
@@ -148,6 +148,7 @@ a {
 
 	<script
 		src="${pageContext.request.contextPath}/resource/js/jquery-2.1.1.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resource/DatePicker/WdatePicker.js"> </script>
 	<script
 		src="${pageContext.request.contextPath}/resource/validate/jquery.validate.js"></script>
 	<script
@@ -155,29 +156,54 @@ a {
 	<script
 		src="${pageContext.request.contextPath}/resource/validate/messages_zh.js"></script>
 	<script>
+		$.validator.addMethod("checkUnique", function(value, element) { 
+			//获取输入帐户名
+		    var account = $("#account").val();
+		    var isUnique = false;
+		    if(account!=null&&account.length>0){
+		    	//使用ajax设置同步 避免post异步数据赋值延迟
+		    	$.ajax({
+		    		url: "/oa/system/user/userAction_checkAccountUnique.action",
+		    	    async: false,//改为同步方式
+	    	        type: "POST",
+	    	        data: {'account':account},
+	    	        dataType: "json",
+	    	        success: function (data) {
+	    	        	isUnique = data;	
+		    		}
+		    	});
+		    }
+		    if(isUnique){
+		    	return true;
+		    }
+		    return false;
+		}, "不唯一");
 		$("#form").validate({
 			//debug : true,
+			onkeyup : false,
 			rules : {
-				equipName : "required",
-				equipType : "required",
-				equipSpec : "required",
-				equipVender : "required",
-				equipStatus : "required",
-				department : "required"
-			},
-			messages : {
-				equipName : "请输入设备名称",
-				equipType : "请选择设备类型",
-				equipSpec : "请选择设备型号",
-				equipVender : "请选择设备厂家",
-				equipStatus : "请选择设备状态",
-				department : "请选择设备所属部门"
+				username : "required",
+				gender : "required",
+				mobilePhone : "required",
+				email : {
+				    required: true,
+				    email: true
+				},
+				department : "required",
+				account : {
+					required: true,
+				    checkUnique: true
+				 },
+				brithday : "required",
+				address : "required",
+				onDutyDate : "required"
 			},
 			errorPlacement : function(error, element) {
 				error.appendTo(element.next());
 			},
+			
 			submitHandler : function(form) {
-				alert("submitted");
+				//alert("submitted");
 				form.submit();
 			}
 		});

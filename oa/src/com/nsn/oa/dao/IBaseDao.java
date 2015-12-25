@@ -6,6 +6,9 @@ import java.util.List;
 
 
 import com.nsn.oa.dao.utils.Conditions;
+import com.nsn.oa.utils.DataTablesPage;
+import com.nsn.oa.utils.Dictionary;
+
 
 /**
  * 顶层接口
@@ -65,4 +68,20 @@ public interface IBaseDao<T> {
 	 * @param bean
 	 */
 	public void removeFromSession(T bean);
+	
+	/**
+	 * 唯一性检查
+	 * @param obj
+	 * @param column
+	 * @return
+	 */
+	public boolean checkUnique(Conditions conditions);
+	
+	/**
+	 * 分页查询逻辑 
+	 * @param page 分页对象 内部封装获取的数据，查询后将数据封装进data
+	 * @param conditions 查询条件
+	 */
+	void page(DataTablesPage<T> page, Conditions conditions);
+	
 }

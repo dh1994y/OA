@@ -40,6 +40,9 @@
 			<result name="loginError">
 				/WEB-INF/jsp/login.jsp
 			</result>
+			<result name="input">
+				/WEB-INF/jsp/error.jsp
+			</result>
 		</action>
 	</package>
 

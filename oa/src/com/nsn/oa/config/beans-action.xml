@@ -25,6 +25,7 @@
       </bean>  
       <bean name="equipmentAction" class="com.nsn.oa.web.action.EquipmentAction" scope="prototype">
       	<property name="equipmentService" ref="equipmentService"/>
+      	<property name="userService" ref="userService"/>
       </bean> 
       <bean name="equipmentMaintenanceAction" class="com.nsn.oa.web.action.EquipmentMaintenanceAction" scope="prototype">
       	<property name="equipmentMaintenanceService" ref="equipmentMaintenanceService"/>

@@ -32,7 +32,7 @@ a {
 .detail {
 	clear: both;
 	padding-top: 25px;
-	height: 450px;
+	height: 600px;
 }
 .block-div {
 	margin: 20px 20px;
@@ -41,7 +41,7 @@ a {
 .inline-div{
 	display: inline-block;
 	padding-right: 25px;
-	width: 250px;
+	width: 300px;
 }
 
 </style>
@@ -56,41 +56,41 @@ a {
 		<div class="detail">
 			<div class="inline-div">
 				<div class="block-div">
-					设备名称：xxx
+					设备名称：<s:property value="equipName"/>
 				</div>
 				<div class="block-div">
-					设备规格：xxx
+					设备规格：<s:property value="equipSpec"/>
 				</div>
 				<div class="block-div">
-					设备状态：xxx
+					设备状态：<s:property value="equipStatus"/>
 				</div>
 				<div class="block-div">
-					创建用户：xxx
+					创建用户：<s:property value="createUserName"/>
 				</div>
 				<div class="block-div">
-					最后修改用户：xxx
+					最后修改用户：<s:property value="lastModifyUserName"/>
 				</div>
 			</div>
 			<div class="inline-div">
 				<div class="block-div">
-					设备类型：xxx
+					设备类型：<s:property value="equipType"/>
 				</div>
 				<div class="block-div">
-					设备厂家：xxx
+					设备厂家：<s:property value="equipVender"/>
 				</div>
 				<div class="block-div">
-					所属单位：xxx
+					所属单位：<s:property value="department"/>
 				</div>
 				<div class="block-div">
-					创建时间：xxx
+					创建时间：<s:property value="createDate"/>
 				</div>
 				<div class="block-div">
-					最后修改时间：xxx
+					最后修改时间：<s:property value="lastModifyDate"/>
 				</div>
 			</div>
 			<div class="block-div">
 				备注：<br/>
-				<textarea rows="5" cols="50" disabled="disabled"></textarea>
+				<textarea rows="5" cols="50" disabled="disabled"><s:property value="comment"/></textarea>
 			</div>
 		</div>
 	</div>

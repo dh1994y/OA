@@ -23,11 +23,27 @@ public class User {
 	private Date onDutyDate;//入职时间
 	private Date offDutyDate;//离职时间
 	private String comment;//备注
-	private String createUser;//创建人id
+	private String createUser;//创建人  数据库中存储id
 	private Date createDate;//创建日期
-	private String lastModifyUser;//最后修改人id
+	private String lastModifyUser;//最后修改人 数据库中存储id
 	private Date lastModifyDate;//最后修改日期
 	private boolean isDelete;//是否已删除
+	
+	private String createUserName;//创建用户名 不存数据库
+	private String lastModifyUserName;//最后修改用户名 不存数据库
+	
+	public String getCreateUserName() {
+		return createUserName;
+	}
+	public void setCreateUserName(String createUserName) {
+		this.createUserName = createUserName;
+	}
+	public String getLastModifyUserName() {
+		return lastModifyUserName;
+	}
+	public void setLastModifyUserName(String lastModifyUserName) {
+		this.lastModifyUserName = lastModifyUserName;
+	}
 	public String getId() {
 		return id;
 	}

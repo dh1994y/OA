@@ -30,6 +30,7 @@ a {
 }
 
 .form {
+	padding-top: 35px;
 	clear: both;
 	height: 450px;
 }
@@ -72,16 +73,11 @@ a {
 				action="${pageContext.request.contextPath}/equipment/equipment/equipmentMaintenanceAction_save.action"
 				method="post">
 				<div>
-					<span>*&nbsp;</span>设备名称：xxx
+					<input type="hidden" value="<s:property value="%{id}"/>" name="equipId"/>
+					<span>*&nbsp;</span>设备名称：<s:property value="equipName"/>
 				</div>
 				<div>
-					<span>*&nbsp;</span>设备ID：xxx
-				</div>
-				<div>
-					<span>*&nbsp;</span>维护人：xxx
-				</div>
-				<div>
-					<span>*&nbsp;</span>维护日期：xxx
+					<span>*&nbsp;</span>维护人：<s:property value="%{#session.user.username}"/>
 				</div>
 				<div>
 					<span>*&nbsp;</span>备注：<span></span><br/>
@@ -103,19 +99,24 @@ a {
 	<script
 		src="${pageContext.request.contextPath}/resource/validate/messages_zh.js"></script>
 	<script>
+		$.validator.addMethod("textAreaCK",function(value, element){
+			return false;
+			if(value==null||value.lenght==0){
+				return false;
+			}
+			return true;
+		},"必须输入备注信息");
 		$("#form").validate({
 			debug : true,
+			onkeyup : false,
 			rules : {
-				comment : "required",
-			},
-			messages : {
-				comment : "必须添加备注详情",
+				comment : "textAreaCK",
 			},
 			errorPlacement : function(error, element) {
-				error.appendTo(element.next());
+				error.appendTo(element.prev().prev());
 			},
 			submitHandler : function(form) {
-				alert("submitted");
+				//alert("submitted");
 				form.submit();
 			}
 		});

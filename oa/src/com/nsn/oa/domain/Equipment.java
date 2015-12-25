@@ -12,6 +12,7 @@ import java.util.Date;
 public class Equipment {
 	private String id;// id
 	private String equipName;// 设备名称
+	private int equipNum;// 设备编号  唯一
 	private String department;// 所属单位
 	private String equipType;// 设备类型
 	private String equipSpec;// 设备规格
@@ -23,6 +24,10 @@ public class Equipment {
 	private String lastModifyUser;// 最后修改人id
 	private Date lastModifyDate;// 最后修改日期
 	private boolean isDelete;// 是否被删除
+	
+	//辅助字段
+	private String createUserName;//创建用户名
+	private String lastModifyUserName;//最后修改用户名
 	
 	public String getId() {
 		return id;
@@ -102,4 +107,23 @@ public class Equipment {
 	public void setIsDelete(boolean isDelete) {
 		this.isDelete = isDelete;
 	}
+	public int getEquipNum() {
+		return equipNum;
+	}
+	public void setEquipNum(int equipNum) {
+		this.equipNum = equipNum;
+	}
+	public String getCreateUserName() {
+		return createUserName;
+	}
+	public void setCreateUserName(String createUserName) {
+		this.createUserName = createUserName;
+	}
+	public String getLastModifyUserName() {
+		return lastModifyUserName;
+	}
+	public void setLastModifyUserName(String lastModifyUserName) {
+		this.lastModifyUserName = lastModifyUserName;
+	}
+	
 }

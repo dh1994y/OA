@@ -19,11 +19,13 @@ a {
 	width: 75%;
 	margin: 20px auto;
 }
-.title{
+
+.title {
 	height: 20px;
 	float: left;
 	color: blue;
 }
+
 .back {
 	height: 20px;
 	float: right;
@@ -72,41 +74,41 @@ a {
 				action="${pageContext.request.contextPath}/equipment/equipmentAction_save.action"
 				method="post">
 				<div>
-					<span>*&nbsp;</span>设备名称：<input type="text" name="equipName" /><span
-						id="ss"></span>
+					<span>*&nbsp;</span>设备名称：<input type="text" name="equipName" /><span></span>
 				</div>
 				<div>
 					<span>*&nbsp;</span>设备类型：
 					<s:select list="%{#application.dict.dictMap.equipType}"
-						name="equipType"></s:select>
+						name="equipType" emptyOption="true"></s:select>
 					<span></span>
 				</div>
 				<div>
 					<span>*&nbsp;</span>设备规格：
 					<s:select list="%{#application.dict.dictMap.equipSpec}"
-						name="equipSpec"></s:select>
+						name="equipSpec" emptyOption="true"></s:select>
 					<span></span>
 				</div>
 				<div>
 					<span>*&nbsp;</span>设备厂家：
 					<s:select list="%{#application.dict.dictMap.equipVender}"
-						name="equipVender"></s:select>
+						name="equipVender" emptyOption="true"></s:select>
 					<span></span>
 				</div>
 				<div>
 					<span>*&nbsp;</span>设备状态：
 					<s:select list="%{#application.dict.dictMap.equipStatus}"
-						name="equipStatus"></s:select>
+						name="equipStatus" emptyOption="true"></s:select>
 					<span></span>
 				</div>
 				<div>
 					<span>*&nbsp;</span>所属单位：
-					<s:select list="%{#application.dict.dictMap.dept}" name="department"></s:select>
+					<s:select list="%{#application.dict.dictMap.dept}"
+						name="department" emptyOption="true"></s:select>
 					<span></span>
 				</div>
 				<div>
-					备注：<br/>
-					<textarea rows="5" cols="50"></textarea>
+					备注：<br />
+					<textarea rows="5" cols="50" name="comment"></textarea>
 				</div>
 				<div>
 					<input type="submit" value="添加" class="btn" />
@@ -146,7 +148,7 @@ a {
 				error.appendTo(element.next());
 			},
 			submitHandler : function(form) {
-				alert("submitted");
+				//alert("submitted");
 				form.submit();
 			}
 		});

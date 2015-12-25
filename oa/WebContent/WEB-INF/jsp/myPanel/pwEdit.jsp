@@ -68,16 +68,13 @@ a {
 				action="${pageContext.request.contextPath}/myPanel/personal/personalInfoAction_updatePwd.action"
 				method="post">
 				<div>
-					初始密码：xxx
-				</div>
-				<div>
 					<span>*&nbsp;</span>新密码：
-					<input type="text" name="password"/>
+					<input type="text" name="password" id="password" value="<s:property value="%{password}"/>"/>
 					<span></span>
 				</div>
 				<div>
 					<span>*&nbsp;</span>重复密码：
-					<input type="text" name="rePassword"/>
+					<input type="text" name="rePassword" value="<s:property value="%{password}"/>"/>
 					<span></span>
 				</div>
 				<div>
@@ -99,26 +96,28 @@ a {
 		$("#form").validate({
 			//debug : true,
 			rules : {
-				equipName : "required",
-				equipType : "required",
-				equipSpec : "required",
-				equipVender : "required",
-				equipStatus : "required",
-				department : "required"
+				password : {
+					required : true,
+				},
+				rePassword : {
+					required : true,
+					equalTo : "#password", 
+				}
 			},
 			messages : {
-				equipName : "请输入设备名称",
-				equipType : "请选择设备类型",
-				equipSpec : "请选择设备型号",
-				equipVender : "请选择设备厂家",
-				equipStatus : "请选择设备状态",
-				department : "请选择设备所属部门"
+				password : {
+					required : "请输入密码",
+				},
+				rePassword : {
+					required : "请再次输入密码",
+					equalTo : "两次输入不一致"
+				}
 			},
 			errorPlacement : function(error, element) {
 				error.appendTo(element.next());
 			},
 			submitHandler : function(form) {
-				alert("submitted");
+				//alert("submitted");
 				form.submit();
 			}
 		});

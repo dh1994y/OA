@@ -3,14 +3,22 @@ package com.nsn.oa.dao.impl;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.sql.SQLException;
 import java.util.Collection;
 import java.util.List;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import com.nsn.oa.dao.IBaseDao;
 import com.nsn.oa.dao.utils.Conditions;
+import com.nsn.oa.dao.utils.Conditions.Operator;
 import com.nsn.oa.dao.utils.Conditions.WhereAndValues;
+import com.nsn.oa.utils.DataTablesPage;
+import com.nsn.oa.utils.Dictionary;
 
 /**
  * BaseDao的实现类 提供基础方法
@@ -20,6 +28,10 @@ import com.nsn.oa.dao.utils.Conditions.WhereAndValues;
  * @param <T>
  */
 public class BaseDaoImpl<T> implements IBaseDao<T> {
+
+	public Class<T> getBeanClass() {
+		return beanClass;
+	}
 
 	/**
 	 * 持有操作hibernate的模板
@@ -116,6 +128,62 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	// ================将制定对象从session中移除======================
 	public void removeFromSession(T bean){
 		template.evict(bean);
+	}
+
+	
+	//======================唯一性检查============================
+	@Override
+	public boolean checkUnique(Conditions conditions) {
+		List<T> list = findByConditions(conditions);
+		if(list!=null&&list.size()>0){
+			return false;
+		}
+		return true;
+	}
+
+	//=======================分页查询逻辑==========================
+	@Override
+	public void page(DataTablesPage<T> page, Conditions conditions) {
+		//查询所需数据 
+		WhereAndValues wv = conditions.createWhereAndValues();
+	    final Object[] values = wv.getValues();
+		final String hql = "from " + beanClass.getName() + wv.getWhere();
+		System.out.println(hql);
+		List<T> date = template.execute(new HibernateCallback<List<T>>() {
+
+			@Override
+			public List<T> doInHibernate(Session session) throws HibernateException, SQLException {
+				//创建query对象
+				Query query = session.createQuery(hql);
+				if(values!=null&&values.length>0){
+					for(int i=0;i<values.length;i++){
+						query.setParameter(i, values[i]);
+					}
+				}
+				query.setFirstResult(page.getIDisplayStart());
+				query.setMaxResults(page.getIDisplayLength());
+				return query.list();
+			}
+		});
+		page.setData(date);
+	
+		//查询记录总数 
+		final String totalHql = "select count(*) from " + beanClass.getName() + wv.getWhere(); 
+		long totalCount = template.execute(new HibernateCallback<Long>() {
+
+			@Override
+			public Long doInHibernate(Session session) throws HibernateException, SQLException {
+				Query query = session.createQuery(totalHql);
+				if(values!=null&&values.length>0){
+					for(int i=0;i<values.length;i++){
+						query.setParameter(i, values[i]);
+					}
+				}
+				return (Long) query.uniqueResult();
+			}
+		});
+		page.setITotalRecords((int)totalCount);
+		page.setITotalDisplayRecords(page.getITotalRecords());
 	}
 	
 }

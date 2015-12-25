@@ -18,9 +18,6 @@
 			<result name="add">
 				/WEB-INF/jsp/equipment/equipAdd.jsp
 			</result>
-			<result name="saveSucc">
-				/WEB-INF/jsp/equipment/equipHome.jsp
-			</result>
 		</action>
 		
 		<action name="equipmentMaintenanceAction_*" class="equipmentMaintenanceAction" method="{1}">
@@ -32,6 +29,10 @@
 			</result>
 			<result name="add">
 				/WEB-INF/jsp/equipment/equipMaintenanceAdd.jsp
+			</result>
+			<result name="saveSucc" type="redirectAction">
+				 <param name="actionName">equipmentAction_home</param>
+        		 <param name="namespace">/equipment</param>
 			</result>
 		</action>
 		
@@ -45,8 +46,11 @@
 			<result name="add">
 				/WEB-INF/jsp/equipment/equipRejectAdd.jsp
 			</result>
+			<result name="saveSucc" type="redirectAction">
+				 <param name="actionName">equipmentAction_home</param>
+        		 <param name="namespace">/equipment</param>
+			</result>
 		</action>
 	</package>
 	
-
 </struts>

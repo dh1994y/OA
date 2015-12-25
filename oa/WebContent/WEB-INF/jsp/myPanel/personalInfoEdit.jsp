@@ -84,24 +84,24 @@ a {
 				<div class="inline-div">
 					<div class="block-div">
 						<span>*&nbsp;</span>手机：
-						<input type="text" name="mobilephone" />
+						<input type="text" name="mobilePhone" value="<s:property value="%{mobilePhone}"/>"/>
 						<span></span>
 					</div>
 					<div class="block-div">
 						<span>*&nbsp;</span>邮箱：
-						<input type="text" name="email" />
+						<input type="text" name="email" value="<s:property value="%{email}"/>"/>
 						<span></span>
 					</div>
 				</div>
 				<div class="inline-div">
 					<div class="block-div">
-						<span>*&nbsp;</span>电话：
-						<input type="text" name="telephone" />
+						<span>&nbsp;&nbsp;&nbsp;</span>电话：
+						<input type="text" name="telephone" value="<s:property value="%{telephone}"/>"/>
 						<span></span>
 					</div>
 					<div class="block-div">
 						<span>*&nbsp;</span>地址：
-						<input type="text" name="address" />
+						<input type="text" name="address" value="<s:property value="%{address}"/>"/>
 						<span></span>
 					</div>
 				</div>
@@ -122,28 +122,20 @@ a {
 		src="${pageContext.request.contextPath}/resource/validate/messages_zh.js"></script>
 	<script>
 		$("#form").validate({
-			//debug : true,
+			debug : true,
 			rules : {
-				equipName : "required",
-				equipType : "required",
-				equipSpec : "required",
-				equipVender : "required",
-				equipStatus : "required",
-				department : "required"
-			},
-			messages : {
-				equipName : "请输入设备名称",
-				equipType : "请选择设备类型",
-				equipSpec : "请选择设备型号",
-				equipVender : "请选择设备厂家",
-				equipStatus : "请选择设备状态",
-				department : "请选择设备所属部门"
+				mobilePhone : "required",
+				email : {
+					"required" : true,
+					"email" : true
+				},
+				address : "required",
 			},
 			errorPlacement : function(error, element) {
 				error.appendTo(element.next());
 			},
 			submitHandler : function(form) {
-				alert("submitted");
+				//alert("submitted");
 				form.submit();
 			}
 		});

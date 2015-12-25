@@ -11,9 +11,9 @@
  * Locale: ZH (Chinese, 中文 (Zhōngwén), 汉语, 漢語)
  */
 $.extend($.validator.messages, {
-	required: "这是必填字段",
+	required: "必填",
 	remote: "请修正此字段",
-	email: "请输入有效的电子邮件地址",
+	email: "不合法",
 	url: "请输入有效的网址",
 	date: "请输入有效的日期",
 	dateISO: "请输入有效的日期 (YYYY-MM-DD)",

@@ -1,1 +1,6 @@
 /com/
+/dictionary.xml
+/hibernate.cfg.xml
+/log4j.properties
+/struts.xml
+/xwork-conversion.properties

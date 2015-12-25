@@ -78,20 +78,18 @@ a {
 		<div class="form">
 
 			<div class="inline-div">
-				<div class="block-div">用户名：xxx</div>
-				<div class="block-div">性别：xxx</div>
-				<div class="block-div">手机： xxx</div>
-				<div class="block-div">邮箱： xxx</div>
-				<div class="block-div">所属部门：xxx</div>
-				<div class="block-div">入职时间： xxx</div>
+				<div class="block-div">用户名：<s:property value="username"/></div>
+				<div class="block-div">性别：<s:property value="gender"/></div>
+				<div class="block-div">手机： <s:property value="mobilePhone"/></div>
+				<div class="block-div">邮箱： <s:property value="email"/></div>
+				<div class="block-div">所属部门：<s:property value="units"/></div>
 			</div>
 			<div class="inline-div">
-				<div class="block-div">帐户名： xxx</div>
-				<div class="block-div">出生日期： xxx</div>
-				<div class="block-div">电话： xxx</div>
-				<div class="block-div">地址：xxx</div>
-				<div class="block-div">是否在职：xxx</div>
-				<div class="block-div">离职时间： xxx</div>
+				<div class="block-div">帐户名： <s:property value="account"/></div>
+				<div class="block-div">出生日期： <s:property value="birthday"/></div>
+				<div class="block-div">电话： <s:property value="telephone"/></div>
+				<div class="block-div">地址：<s:property value="address"/></div>
+				<div class="block-div">入职时间： <s:property value="onDutyDate"/></div>
 			</div>
 		</div>
 	</div>
@@ -105,32 +103,7 @@ a {
 	<script
 		src="${pageContext.request.contextPath}/resource/validate/messages_zh.js"></script>
 	<script>
-		$("#form").validate({
-			//debug : true,
-			rules : {
-				equipName : "required",
-				equipType : "required",
-				equipSpec : "required",
-				equipVender : "required",
-				equipStatus : "required",
-				department : "required"
-			},
-			messages : {
-				equipName : "请输入设备名称",
-				equipType : "请选择设备类型",
-				equipSpec : "请选择设备型号",
-				equipVender : "请选择设备厂家",
-				equipStatus : "请选择设备状态",
-				department : "请选择设备所属部门"
-			},
-			errorPlacement : function(error, element) {
-				error.appendTo(element.next());
-			},
-			submitHandler : function(form) {
-				alert("submitted");
-				form.submit();
-			}
-		});
+		
 	</script>
 </body>
 </html>

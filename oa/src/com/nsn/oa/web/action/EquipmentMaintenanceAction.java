@@ -1,6 +1,12 @@
 package com.nsn.oa.web.action;
 
+import java.util.Date;
+
+import org.apache.struts2.ServletActionContext;
+
+import com.nsn.oa.domain.Equipment;
 import com.nsn.oa.domain.EquipmentMaintenance;
+import com.nsn.oa.domain.User;
 import com.nsn.oa.service.EquipmentMaintenanceService;
 import com.nsn.oa.service.EquipmentService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -11,12 +17,25 @@ public class EquipmentMaintenanceAction extends ActionSupport implements ModelDr
 	private EquipmentMaintenance equipmentMaintenance = new EquipmentMaintenance();
 	private EquipmentMaintenanceService equipmentMaintenanceService;
 	private EquipmentService equipmentService;
+	private String equipId;
 	
 	public String add(){
+		//取出设备存入值栈
+		
 		return "add";
 	}
 	
 	public String save(){
+		//置设备状态
+		Equipment equip = equipmentService.findEquipById(equipId);
+		equip.setEquipStatus("正常");
+		equipmentService.update(equip);
+		//存储其他字段  用户id 设备id 时间
+		User currentUser = (User) ServletActionContext.getRequest().getSession().getAttribute("user");
+		equipmentMaintenance.setEquipId(equipId);
+		equipmentMaintenance.setMaintenanceUser(currentUser.getId());
+		equipmentMaintenance.setMaintenanceDate(new Date());
+		equipmentMaintenanceService.add(equipmentMaintenance);
 		return "saveSucc";
 	}
 	
@@ -47,6 +66,14 @@ public class EquipmentMaintenanceAction extends ActionSupport implements ModelDr
 
 	public void setEquipmentService(EquipmentService equipmentService) {
 		this.equipmentService = equipmentService;
+	}
+
+	public String getEquipId() {
+		return equipId;
+	}
+
+	public void setEquipId(String equipId) {
+		this.equipId = equipId;
 	}
 	
 }

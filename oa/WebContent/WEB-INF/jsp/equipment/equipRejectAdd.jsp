@@ -99,19 +99,24 @@ a {
 	<script
 		src="${pageContext.request.contextPath}/resource/validate/messages_zh.js"></script>
 	<script>
+		$.validator.addMethod("textAreaCK",function(value, element){
+			return false;
+			if(value==null||value.lenght==0){
+				return false;
+			}
+			return true;
+		},"必须输入备注信息");
 		$("#form").validate({
 			debug : true,
+			onkeyup : false,
 			rules : {
-				comment : "required",
-			},
-			messages : {
-				comment : "必须添加备注详情",
+				comment : "textAreaCK",
 			},
 			errorPlacement : function(error, element) {
-				error.appendTo(element.next());
+				error.appendTo(element.prev().prev());
 			},
 			submitHandler : function(form) {
-				alert("submitted");
+				//alert("submitted");
 				form.submit();
 			}
 		});

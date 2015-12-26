@@ -107,7 +107,7 @@ a {
 			return true;
 		},"必须输入备注信息");
 		$("#form").validate({
-			debug : true,
+			//debug : true,
 			onkeyup : false,
 			rules : {
 				comment : "textAreaCK",

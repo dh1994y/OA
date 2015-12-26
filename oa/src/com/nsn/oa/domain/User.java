@@ -1,6 +1,7 @@
 package com.nsn.oa.domain;
 
 import java.util.Date;
+import java.util.Set;
 
 /**
  * 用户类
@@ -28,6 +29,8 @@ public class User {
 	private String lastModifyUser;//最后修改人 数据库中存储id
 	private Date lastModifyDate;//最后修改日期
 	private boolean isDelete;//是否已删除
+	
+	private Set<Role> roleList;//用户角色列表
 	
 	private String createUserName;//创建用户名 不存数据库
 	private String lastModifyUserName;//最后修改用户名 不存数据库
@@ -163,6 +166,12 @@ public class User {
 	}
 	public void setIsDelete(boolean isDelete) {
 		this.isDelete = isDelete;
+	}
+	public Set<Role> getRoleList() {
+		return roleList;
+	}
+	public void setRoleList(Set<Role> roleList) {
+		this.roleList = roleList;
 	}
 	
 	

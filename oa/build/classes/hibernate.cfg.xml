@@ -24,5 +24,7 @@
 		<mapping resource="com/nsn/oa/domain/Equipment.hbm.xml"/>
 		<mapping resource="com/nsn/oa/domain/EquipmentMaintenance.hbm.xml"/>
 		<mapping resource="com/nsn/oa/domain/EquipmentReject.hbm.xml"/>
+		<mapping resource="com/nsn/oa/domain/Role.hbm.xml"/>
+		<mapping resource="com/nsn/oa/domain/Permission.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

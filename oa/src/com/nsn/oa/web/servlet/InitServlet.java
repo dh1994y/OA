@@ -13,11 +13,14 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.nsn.oa.dao.IMenuDao;
+import com.nsn.oa.dao.IRoleDao;
 import com.nsn.oa.dao.utils.Conditions;
 import com.nsn.oa.dao.utils.Conditions.Operator;
 import com.nsn.oa.domain.Menu;
 import com.nsn.oa.domain.utils.MenuConfig;
 import com.nsn.oa.domain.utils.MenuItem;
+import com.nsn.oa.domain.utils.RoleMenu;
+import com.nsn.oa.domain.utils.RoleMenu.RoleEnum;
 
 /**
  *	初始化servlet  用于初始化菜单
@@ -62,6 +65,9 @@ public class InitServlet extends HttpServlet {
     	ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
     	IMenuDao menuDao = (IMenuDao) ctx.getBean("menuDao");
     	initMenu(this.getServletContext(),menuDao);
+    	IRoleDao roleDao = (IRoleDao) ctx.getBean("roleDao");
+    	RoleMenu roleMenu = new RoleMenu(menuDao, roleDao, RoleEnum.ADMIN);
+    	System.out.println();
 	}
 
 }

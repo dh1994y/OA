@@ -100,8 +100,7 @@ a {
 		src="${pageContext.request.contextPath}/resource/validate/messages_zh.js"></script>
 	<script>
 		$.validator.addMethod("textAreaCK",function(value, element){
-			return false;
-			if(value==null||value.lenght==0){
+			if(value==null||value.length==0){
 				return false;
 			}
 			return true;

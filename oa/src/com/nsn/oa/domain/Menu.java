@@ -1,5 +1,7 @@
 package com.nsn.oa.domain;
 
+import java.util.Set;
+
 public class Menu {
 
 	private String id;//菜单id
@@ -10,6 +12,7 @@ public class Menu {
 	private String url;//映射地址
 	private int isUse;//是否启用
 	
+	private Set<Permission> permissionSet;//权限列表
 	
 	public String getId() {
 		return id;
@@ -52,6 +55,12 @@ public class Menu {
 	}
 	public void setOrderValue(int orderValue) {
 		this.orderValue = orderValue;
+	}
+	public Set<Permission> getPermissionSet() {
+		return permissionSet;
+	}
+	public void setPermissionSet(Set<Permission> permissionSet) {
+		this.permissionSet = permissionSet;
 	}
 
 }

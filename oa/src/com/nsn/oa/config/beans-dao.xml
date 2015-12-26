@@ -24,6 +24,7 @@
       <bean name="equipmentDao" class="com.nsn.oa.dao.impl.EquipmentDaoImpl" parent="baseDao"/>
       <bean name="equipmentMaintenanceDao" class="com.nsn.oa.dao.impl.EquipmentMaintenanceDaoImpl" parent="baseDao"/>
       <bean name="equipmentRejectDao" class="com.nsn.oa.dao.impl.EquipmentRejectDaoImpl" parent="baseDao"/>
-      
+      <bean name="permissionDao" class="com.nsn.oa.dao.impl.PermissionDaoImpl" parent="baseDao"/>
+      <bean name="roleDao" class="com.nsn.oa.dao.impl.RoleDaoImpl" parent="baseDao"/>
 </beans>
       

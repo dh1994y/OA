@@ -28,5 +28,11 @@
 		<property name="lastModifyUser" column="lastModifyUser"/>
 		<property name="lastModifyDate" column="lastModifyDate"/>
 		<property name="isDelete" column="isDelete"/>
+		
+		<!-- 一对多映射 -->
+		<set name="roleList" inverse="true" cascade="all">
+			<key column="id"/>
+			<one-to-many class="com.nsn.oa.domain.Role"/>
+		</set>
 	</class>
 </hibernate-mapping>

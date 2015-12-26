@@ -4,6 +4,7 @@ package com.nsn.oa.domain;
  */
 import java.util.Date;
 
+
 public class EquipmentMaintenance {
 	private String id;//id
 	private String equipId;//设备id

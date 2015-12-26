@@ -18,5 +18,9 @@ public class EquipmentMaintenanceService {
 		equipmentMaintenanceDao.addOrUpdate(equipmentMaintenance);
 	}
 
+	public EquipmentMaintenance findById(String id) {
+		return equipmentMaintenanceDao.findById(id);
+	}
+
 	
 }

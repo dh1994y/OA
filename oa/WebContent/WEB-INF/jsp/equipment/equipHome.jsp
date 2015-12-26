@@ -152,8 +152,8 @@ select {
 				var content = "<a href='" + detailUrl + "?id=" + aData.id
 						+ "'>详情</a>&nbsp;<a href='" + updateUrl + "?id="
 						+ aData.id + "'>修改</a>&nbsp;<a id='"+aData.id+"' href='javascript:void(0)' url='"
-						+ maintenanceUrl + "?id=" + aData.id + "'>维修</a>&nbsp;<a id='"+aData.id+"' href='javascript:void(0)' url='"
-						+ rejectUrl + "?id=" + aData.id + "'>报废</a>&nbsp;<a id='del' href='javascript:void(0)' url='"
+						+ maintenanceUrl + "?equipId=" + aData.id + "'>维修</a>&nbsp;<a id='"+aData.id+"' href='javascript:void(0)' url='"
+						+ rejectUrl + "?equipId=" + aData.id + "'>报废</a>&nbsp;<a id='del' href='javascript:void(0)' url='"
 						+ deleteUrl + "?id=" + aData.id + "'>删除</a>"
 				//把一行的最后一个单元格里的内容替换为删除超链接 和 修改超链接
 				$(":last-child", nRow).html(content);

@@ -29,9 +29,11 @@
       </bean> 
       <bean name="equipmentMaintenanceAction" class="com.nsn.oa.web.action.EquipmentMaintenanceAction" scope="prototype">
       	<property name="equipmentMaintenanceService" ref="equipmentMaintenanceService"/>
+      	<property name="equipmentService" ref="equipmentService"/>
       </bean> 
       <bean name="equipmentRejectAction" class="com.nsn.oa.web.action.EquipmentRejectAction" scope="prototype">
       	<property name="equipmentRejectService" ref="equipmentRejectService"/>
+      	<property name="equipmentService" ref="equipmentService"/>
       </bean> 
       <bean name="personalInfoAction" class="com.nsn.oa.web.action.PersonalInfoAction" scope="prototype">
       	<property name="userService" ref="userService"/>

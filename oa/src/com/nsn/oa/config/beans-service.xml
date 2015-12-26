@@ -32,5 +32,11 @@
       <bean name="equipmentRejectService" class="com.nsn.oa.service.EquipmentRejectService">
       	<property name="equipmentRejectDao" ref="equipmentRejectDao"/>
       </bean>
+      <bean name="permissionService" class="com.nsn.oa.service.PermissionService">
+      	<property name="permissionDao" ref="permissionDao"/>
+      </bean>
+      <bean name="roleService" class="com.nsn.oa.service.RoleService">
+      	<property name="roleDao" ref="roleDao"/>
+      </bean>
 </beans>
       

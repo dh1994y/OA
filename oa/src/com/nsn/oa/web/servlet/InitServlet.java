@@ -1,7 +1,9 @@
 package com.nsn.oa.web.servlet;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -28,35 +30,23 @@ import com.nsn.oa.domain.utils.RoleMenu.RoleEnum;
 public class InitServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private void initMenu(ServletContext context,IMenuDao menuDao){
-		//创建MenuConfig对象
-		MenuConfig config = new MenuConfig();
-		List<String> mainNavList = new ArrayList<>();
-		List<List<MenuItem>> leftNavList = new ArrayList<>();
-		Conditions conditions = new Conditions();
-		conditions.addCondition("isUse", 1, Operator.EQUALS);
-		conditions.addCondition("level", 1, Operator.EQUALS);
-		conditions.addOrderBy("orderValue", true);
-		List<Menu> menuList = menuDao.findByConditions(conditions);
-		for(Menu menu : menuList){
-			mainNavList.add(menu.getName());
-			List<MenuItem> menuItemList = new ArrayList<>();
-			leftNavList.add(menuItemList);
-			conditions.clear();
-			conditions.addCondition("isUse", 1, Operator.EQUALS);
-			conditions.addCondition("parentId", menu.getId(), Operator.EQUALS);
-			conditions.addOrderBy("orderValue", true);
-			List<Menu> mList = menuDao.findByConditions(conditions);
-			for(Menu m : mList){
-				MenuItem menuItem = new MenuItem();
-				menuItem.setName(m.getName());
-				menuItem.setUrl(m.getUrl());
-				menuItemList.add(menuItem);
-			}
-		}
-		config.setLeftNavList(leftNavList);
-		config.setMainNavList(mainNavList);
-		context.setAttribute("config", config);
+	/**
+	 * 初始化配置
+	 * @param context
+	 * @param menuDao
+	 * @param roleDao
+	 */
+	private void initMenu(ServletContext context,IMenuDao menuDao,IRoleDao roleDao){
+		Map<String,RoleMenu> roleMenuMap = new HashMap<>();
+		RoleMenu generalRM = new RoleMenu(menuDao, roleDao, RoleEnum.GENERAL);
+		RoleMenu manageRM = new RoleMenu(menuDao, roleDao, RoleEnum.MANAGE);
+		RoleMenu equipRM = new RoleMenu(menuDao, roleDao, RoleEnum.EQUIP);
+		RoleMenu adminRM = new RoleMenu(menuDao, roleDao, RoleEnum.ADMIN);
+		roleMenuMap.put("通用", generalRM);
+		roleMenuMap.put("经理", manageRM);
+		roleMenuMap.put("设备管理员", equipRM);
+		roleMenuMap.put("系统管理员", adminRM);
+		context.setAttribute("roleMenuMap", roleMenuMap);
 	}
 	@Override
 	public void init() throws ServletException {
@@ -64,10 +54,8 @@ public class InitServlet extends HttpServlet {
     	//ApplicationContext ctx = (ApplicationContext)getServletContext().getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
     	ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
     	IMenuDao menuDao = (IMenuDao) ctx.getBean("menuDao");
-    	initMenu(this.getServletContext(),menuDao);
     	IRoleDao roleDao = (IRoleDao) ctx.getBean("roleDao");
-    	RoleMenu roleMenu = new RoleMenu(menuDao, roleDao, RoleEnum.ADMIN);
-    	System.out.println();
+    	initMenu(this.getServletContext(),menuDao,roleDao);
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.nsn.oa.domain;
 
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -11,7 +12,7 @@ import java.util.Set;
 public class Role {
 	private String id;//id
 	private String roleName;//角色名称
-	private Set<Menu> menuList;//菜单列表
+	private Set<Menu> menuSet = new HashSet<>();//菜单列表
 	
 	
 	public String getId() {
@@ -26,11 +27,11 @@ public class Role {
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
-	public Set<Menu> getMenuList() {
-		return menuList;
+	public Set<Menu> getMenuSet() {
+		return menuSet;
 	}
-	public void setMenuList(Set<Menu> menuList) {
-		this.menuList = menuList;
+	public void setMenuSet(Set<Menu> menuSet) {
+		this.menuSet = menuSet;
 	}
 	
 }

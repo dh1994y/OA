@@ -22,7 +22,7 @@ import com.nsn.oa.domain.Role;
  * @author Administrator
  *
  */
-public class RoleMenu {
+public class RoleMenu{
 	//TreeMap如不指定排序器，默认将按照key值进行升序排序，如果指定了排序器，则按照指定的排序器进行排序。
 	private Map<Integer,String> mainMenuMap = new TreeMap<>();//主导航栏    <顺序值，菜单名>
 	private Map<Integer,Map<Integer,MenuItem>> leftMenuMap = new TreeMap<>();//侧边导航栏 <主导航顺序值，<侧导航顺序值，二级菜单项>>
@@ -39,7 +39,9 @@ public class RoleMenu {
 		for (Integer order : orderSet) {
 			if(!leftMenuMap.containsKey(order)){
 				//若不包含直接put
-				leftMenuMap.put(order, roleMenu.getLeftMenuMap().get(order));
+				Map<Integer,MenuItem> map = new TreeMap<>();
+				leftMenuMap.put(order, map);
+				map.putAll(roleMenu.getLeftMenuMap().get(order));
 			}else{
 				//存在则更新
 				leftMenuMap.get(order).putAll(roleMenu.getLeftMenuMap().get(order));
@@ -85,7 +87,7 @@ public class RoleMenu {
 		//获取一级菜单辅助map 便于检索
 		Conditions conditions = new Conditions();
 		conditions.addCondition("isUse", 1, Operator.EQUALS);
-		conditions.addCondition("orderValue", 1, Operator.EQUALS);
+		conditions.addCondition("level", 1, Operator.EQUALS);
 		List<Menu> mainMenuList = menuDao.findByConditions(conditions);
 		Map<String,Entry> mainMap = new HashMap<>();
 		for (Menu menu : mainMenuList) {
@@ -102,7 +104,7 @@ public class RoleMenu {
 		}
 		//获取对应角色
 		Role role = roleList.get(0);
-		Set<Menu> menuSet = role.getMenuList();
+		Set<Menu> menuSet = role.getMenuSet();
 		for (Menu menu : menuSet) {
 			//创建menuItem
 			MenuItem item = new MenuItem();
@@ -134,6 +136,15 @@ public class RoleMenu {
 	public RoleMenu(IMenuDao menuDao, IRoleDao roleDao, RoleEnum roleEnum) {
 		//构造时初始化
 		init(menuDao, roleDao,roleEnum);
+	}
+	
+	public RoleMenu(RoleMenu roleMenu) {
+		mainMenuMap.putAll(roleMenu.getMainMenuMap());
+		leftMenuMap.putAll(roleMenu.getLeftMenuMap());
+		permissionMap.putAll(roleMenu.getPermissionMap());
+	}
+	
+	public RoleMenu() {
 	}
 
 	public Map<Integer, String> getMainMenuMap() {

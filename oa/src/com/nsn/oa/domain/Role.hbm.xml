@@ -11,10 +11,10 @@
 		<!-- 定义字段映射 -->
 		<property name="roleName" column="roleName"/>
 		
-		<!-- 一对多映射 -->
-		<set name="menuList" inverse="true" cascade="all">
-			<key column="id"/>
-			<one-to-many class="com.nsn.oa.domain.Menu"/>
+		<!-- 多对多映射 只实现了一端 -->
+		<set name="menuSet" table="role_menu" inverse="true" cascade="all" lazy="false">
+			<key column="roleId"/>
+			<many-to-many column="menuId" class="com.nsn.oa.domain.Menu"/>
 		</set>
 	</class>
 </hibernate-mapping>

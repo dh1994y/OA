@@ -1,6 +1,7 @@
 package com.nsn.oa.domain;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -30,7 +31,7 @@ public class User {
 	private Date lastModifyDate;//最后修改日期
 	private boolean isDelete;//是否已删除
 	
-	private Set<Role> roleList;//用户角色列表
+	private Set<Role> roleSet = new HashSet<>();//用户角色列表
 	
 	private String createUserName;//创建用户名 不存数据库
 	private String lastModifyUserName;//最后修改用户名 不存数据库
@@ -167,11 +168,12 @@ public class User {
 	public void setIsDelete(boolean isDelete) {
 		this.isDelete = isDelete;
 	}
-	public Set<Role> getRoleList() {
-		return roleList;
+
+	public Set<Role> getRoleSet() {
+		return roleSet;
 	}
-	public void setRoleList(Set<Role> roleList) {
-		this.roleList = roleList;
+	public void setRoleSet(Set<Role> roleSet) {
+		this.roleSet = roleSet;
 	}
 	
 	

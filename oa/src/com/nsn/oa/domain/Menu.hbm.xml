@@ -15,10 +15,10 @@
 		<property name="parentId" column="parentId"/>
 		<property name="url" column="url"/>
 		<property name="isUse" column="isUse"/>
-		<!-- 定义一对多映射 -->
-		<set name="permissionSet" inverse="true" cascade="all">
-			<key column="id"/>
-			<one-to-many class="com.nsn.oa.domain.Permission"/>
+		<!-- 多对多映射 只实现了一端 -->
+		<set name="permissionSet" table="menu_permission" inverse="true" cascade="all" lazy="false">
+			<key column="menuId"/>
+			<many-to-many column="permissionId" class="com.nsn.oa.domain.Permission"/>
 		</set>
 	</class>
 </hibernate-mapping>

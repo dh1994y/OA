@@ -2,6 +2,8 @@ package com.nsn.oa.web.action;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.Cookie;
 
@@ -9,7 +11,10 @@ import org.apache.struts2.ServletActionContext;
 
 import com.nsn.oa.dao.utils.Conditions;
 import com.nsn.oa.dao.utils.Conditions.Operator;
+import com.nsn.oa.domain.Role;
 import com.nsn.oa.domain.User;
+import com.nsn.oa.domain.utils.MenuConfig;
+import com.nsn.oa.domain.utils.RoleMenu;
 import com.nsn.oa.service.UserService;
 import com.nsn.oa.utils.CommonUtils;
 import com.nsn.oa.utils.DataTablesPage;
@@ -188,6 +193,19 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		if (loginSucc) {
 			// 登录成功标识
 			ServletActionContext.getRequest().getSession().setAttribute("user", user);
+			// 判断拥有用户 生成 菜单 及权限
+			Map<String,RoleMenu> roleMenuMap = (Map<String, RoleMenu>) ServletActionContext.getServletContext().getAttribute("roleMenuMap");
+			MenuConfig config = null;
+			RoleMenu roleMenu = new RoleMenu();
+			roleMenu.addRoleMenu(roleMenuMap.get("通用"));
+			Set<Role> roleSet = user.getRoleSet();
+			if(roleSet.size()>0){
+				for (Role role : roleSet) {
+					roleMenu.addRoleMenu(roleMenuMap.get(role.getRoleName()));
+				}
+			}
+			config = roleMenu.createMenuConfig();
+			ServletActionContext.getRequest().getSession().setAttribute("config", config);
 			// 判断是否记住密码
 			if ("yes".equals(isRemember)) {
 				// 创建cookie

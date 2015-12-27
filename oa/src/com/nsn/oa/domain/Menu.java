@@ -1,5 +1,6 @@
 package com.nsn.oa.domain;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Menu {
@@ -12,7 +13,7 @@ public class Menu {
 	private String url;//映射地址
 	private int isUse;//是否启用
 	
-	private Set<Permission> permissionSet;//权限列表
+	private Set<Permission> permissionSet = new HashSet<>();//权限列表
 	
 	public String getId() {
 		return id;

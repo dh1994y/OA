@@ -15,10 +15,8 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import com.nsn.oa.dao.IBaseDao;
 import com.nsn.oa.dao.utils.Conditions;
-import com.nsn.oa.dao.utils.Conditions.Operator;
 import com.nsn.oa.dao.utils.Conditions.WhereAndValues;
 import com.nsn.oa.utils.DataTablesPage;
-import com.nsn.oa.utils.Dictionary;
 
 /**
  * BaseDao的实现类 提供基础方法

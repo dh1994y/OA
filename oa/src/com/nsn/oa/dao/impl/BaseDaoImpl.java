@@ -130,6 +130,11 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 		template.evict(bean);
 	}
 
+	public void removeFromSession(Collection<T> beans){
+		for (T bean : beans) {
+			template.evict(bean);
+		}
+	}
 	
 	//======================唯一性检查============================
 	@Override
@@ -184,6 +189,13 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 		});
 		page.setITotalRecords((int)totalCount);
 		page.setITotalDisplayRecords(page.getITotalRecords());
+	}
+
+	//查询全部
+	@Override
+	public List<T> findAll() {
+		String hql = " from " + beanClass.getName();
+		return template.find(hql);
 	}
 	
 }

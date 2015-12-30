@@ -60,9 +60,9 @@
 	<script src="${pageContext.request.contextPath}/resource/js/oa.js"></script>
 	<script>
 		
-	  	$.post("/oa/system/menu/menuAction_getMenuConfig.action",function(config){
+	  	$.post("/oa/system/auth/authAction_getMenuConfig.action",function(config){
 	  		
-	  		createMenu(eval('('+config+')'));
+	  		createMenu(config);
 	  	});
 	  	
 	  	showDT();

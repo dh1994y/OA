@@ -1,17 +1,14 @@
 package com.nsn.oa.web.servlet;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.nsn.oa.dao.IMenuDao;
@@ -19,9 +16,8 @@ import com.nsn.oa.dao.IRoleDao;
 import com.nsn.oa.dao.utils.Conditions;
 import com.nsn.oa.dao.utils.Conditions.Operator;
 import com.nsn.oa.domain.Menu;
-import com.nsn.oa.domain.utils.MenuConfig;
-import com.nsn.oa.domain.utils.MenuItem;
 import com.nsn.oa.domain.utils.RoleMenu;
+import com.nsn.oa.domain.utils.RoleMenu.Entry;
 import com.nsn.oa.domain.utils.RoleMenu.RoleEnum;
 
 /**
@@ -48,6 +44,20 @@ public class InitServlet extends HttpServlet {
 		roleMenuMap.put("系统管理员", adminRM);
 		context.setAttribute("roleMenuMap", roleMenuMap);
 	}
+	
+	private void initData(ServletContext context,IMenuDao menuDao){
+		//获取一级菜单辅助map 便于检索
+		Conditions conditions = new Conditions();
+		conditions.addCondition("isUse", 1, Operator.EQUALS);
+		conditions.addCondition("level", 1, Operator.EQUALS);
+		List<Menu> mainMenuList = menuDao.findByConditions(conditions);
+		Map<String,String> mainMenuMap = new HashMap<>();
+		for (Menu menu : mainMenuList) {
+			mainMenuMap.put(menu.getId(),menu.getName());
+		}
+		context.setAttribute("mainMenuMap", mainMenuMap);
+	}
+	
 	@Override
 	public void init() throws ServletException {
 		super.init();
@@ -56,6 +66,7 @@ public class InitServlet extends HttpServlet {
     	IMenuDao menuDao = (IMenuDao) ctx.getBean("menuDao");
     	IRoleDao roleDao = (IRoleDao) ctx.getBean("roleDao");
     	initMenu(this.getServletContext(),menuDao,roleDao);
+    	initData(this.getServletContext(),menuDao);
 	}
 
 }

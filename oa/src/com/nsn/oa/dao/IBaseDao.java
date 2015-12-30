@@ -7,7 +7,6 @@ import java.util.List;
 
 import com.nsn.oa.dao.utils.Conditions;
 import com.nsn.oa.utils.DataTablesPage;
-import com.nsn.oa.utils.Dictionary;
 
 
 /**
@@ -68,7 +67,7 @@ public interface IBaseDao<T> {
 	 * @param bean
 	 */
 	public void removeFromSession(T bean);
-	
+	public void removeFromSession(Collection<T> beans);
 	/**
 	 * 唯一性检查
 	 * @param obj
@@ -82,6 +81,11 @@ public interface IBaseDao<T> {
 	 * @param page 分页对象 内部封装获取的数据，查询后将数据封装进data
 	 * @param conditions 查询条件
 	 */
-	void page(DataTablesPage<T> page, Conditions conditions);
+	public void page(DataTablesPage<T> page, Conditions conditions);
 	
+	/**
+	 * 查询所有
+	 * @return
+	 */
+	public List<T> findAll();
 }

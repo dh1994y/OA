@@ -38,5 +38,10 @@
       <bean name="personalInfoAction" class="com.nsn.oa.web.action.PersonalInfoAction" scope="prototype">
       	<property name="userService" ref="userService"/>
       </bean>  
+      <bean name="authAction" class="com.nsn.oa.web.action.AuthAction" scope="prototype">
+      	<property name="userService" ref="userService"/>
+      	<property name="roleService" ref="roleService"/>
+      	<property name="menuService" ref="menuService"/>
+      </bean>  
 </beans>
       

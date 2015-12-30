@@ -4,7 +4,7 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	
-	<package name="/" namespace="/equipment" extends="struts-default">
+	<package name="/" namespace="/equipment" extends="new-struts-default">
 		<action name="equipmentAction_*" class="equipmentAction" method="{1}">
 			<result name="home">
 				/WEB-INF/jsp/equipment/equipHome.jsp

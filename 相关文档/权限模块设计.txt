@@ -158,3 +158,15 @@ INSERT INTO menu_permission VALUES ("c11","pequipM02");
 INSERT INTO menu_permission VALUES ("c11","pequipM03");
 INSERT INTO menu_permission VALUES ("c11","pequipR02");
 INSERT INTO menu_permission VALUES ("c11","pequipR03");
+
+INSERT INTO permission VALUES ("pauth01","authAction_findFunctionsByRoleId");
+INSERT INTO permission VALUES ("pauth02","authAction_updateRole");
+INSERT INTO permission VALUES ("pauth03","authAction_roleHome");
+INSERT INTO permission VALUES ("pauth04","authAction_queryUser");
+INSERT INTO permission VALUES ("pauth05","authAction_updateUserRole");
+
+INSERT INTO menu_permission VALUES ("c05","pauth01");
+INSERT INTO menu_permission VALUES ("c05","pauth02");
+INSERT INTO menu_permission VALUES ("c05","pauth03");
+INSERT INTO menu_permission VALUES ("c05","pauth04");
+INSERT INTO menu_permission VALUES ("c05","pauth05");

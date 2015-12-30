@@ -205,7 +205,10 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 				}
 			}
 			config = roleMenu.createMenuConfig();
+			//存菜单配置
 			ServletActionContext.getRequest().getSession().setAttribute("config", config);
+			//存权限项
+			ServletActionContext.getRequest().getSession().setAttribute("pList", roleMenu.createPermission());
 			// 判断是否记住密码
 			if ("yes".equals(isRemember)) {
 				// 创建cookie

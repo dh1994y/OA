@@ -8,6 +8,26 @@
 	<constant name="struts.ui.theme" value="simple"/>
 	<constant name="struts.objectFactory" value="spring"/>
 	
+	<!-- 配置全局拦截器和全局result -->
+	<package name="new-struts-default"  namespace="/"  abstract="true"  extends="struts-default">
+		<interceptors>
+			<interceptor name="authInterceptor" class="com.nsn.oa.web.interceptor.AuthInterceptor"></interceptor>
+			<!-- 新的默认拦截器栈 -->
+			<interceptor-stack name="newDefaultStack">
+				<interceptor-ref name="authInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		
+		<!-- 指定默认的拦截器栈 -->
+		<default-interceptor-ref name="newDefaultStack"></default-interceptor-ref>
+		
+		<!-- 配置全局result -->
+		<global-results>
+			<result name="authError">/authError.jsp</result>
+		</global-results>
+	</package>
+	
 	<!-- 引入配置包 -->
 	<include file="com/nsn/oa/config/struts-system.xml"/>
 	<include file="com/nsn/oa/config/struts-myPanel.xml"/>

@@ -12,7 +12,7 @@
 		<property name="roleName" column="roleName"/>
 		
 		<!-- 多对多映射 只实现了一端 -->
-		<set name="menuSet" table="role_menu" inverse="true" cascade="all" lazy="false">
+		<set name="menuSet" table="role_menu" inverse="false" cascade="all" lazy="false">
 			<key column="roleId"/>
 			<many-to-many column="menuId" class="com.nsn.oa.domain.Menu"/>
 		</set>

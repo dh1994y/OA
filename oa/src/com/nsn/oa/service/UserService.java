@@ -1,12 +1,15 @@
 package com.nsn.oa.service;
 
+import java.util.HashSet;
 import java.util.List;
 
 import com.nsn.oa.dao.IUserDao;
 import com.nsn.oa.dao.utils.Conditions;
+import com.nsn.oa.domain.Role;
 import com.nsn.oa.domain.User;
 import com.nsn.oa.utils.DataTablesPage;
 import com.nsn.oa.utils.Dictionary;
+
 
 /**
  * 用戶模塊業務邏輯
@@ -55,6 +58,16 @@ public class UserService {
 
 	public void deleteUser(User delUser) {
 		userDao.addOrUpdate(delUser);
+	}
+
+	public List<User> findByConditions(Conditions conditions) {
+		return userDao.findByConditions(conditions);
+	}
+
+	public void updateRoles(String userId, HashSet<Role> roles) {
+		User user = userDao.findById(userId);
+		user.setRoleSet(roles);
+		userDao.addOrUpdate(user);
 	}
 	
 }

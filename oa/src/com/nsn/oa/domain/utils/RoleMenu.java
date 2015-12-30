@@ -15,6 +15,8 @@ import com.nsn.oa.dao.utils.Conditions.Operator;
 import com.nsn.oa.domain.Menu;
 import com.nsn.oa.domain.Permission;
 import com.nsn.oa.domain.Role;
+import com.nsn.oa.service.MenuService;
+import com.nsn.oa.service.RoleService;
 
 
 /**
@@ -43,7 +45,7 @@ public class RoleMenu{
 				leftMenuMap.put(order, map);
 				map.putAll(roleMenu.getLeftMenuMap().get(order));
 			}else{
-				//存在则更新
+				//存在则更新 
 				leftMenuMap.get(order).putAll(roleMenu.getLeftMenuMap().get(order));
 			}
 		}
@@ -79,6 +81,10 @@ public class RoleMenu{
 		return permissionMap.values();
 	}
 	
+	
+	public void init(MenuService menuService, RoleService roleService, RoleEnum roleEnum){
+		init(menuService.getMenuDao(),roleService.getRoleDao(),roleEnum);
+	}
 	/**
 	 * 根据角色名初始化RoleMenu对象
 	 * @param roleName
@@ -136,6 +142,11 @@ public class RoleMenu{
 	public RoleMenu(IMenuDao menuDao, IRoleDao roleDao, RoleEnum roleEnum) {
 		//构造时初始化
 		init(menuDao, roleDao,roleEnum);
+	}
+	
+	public RoleMenu(MenuService menuService, RoleService roleService, RoleEnum roleEnum) {
+		//构造时初始化
+		init(menuService, roleService,roleEnum);
 	}
 	
 	public RoleMenu(RoleMenu roleMenu) {

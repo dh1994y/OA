@@ -22,7 +22,7 @@ public class JsonUtils {
 	public static void writeJson(Object src,HttpServletResponse response){
 		String json = gson.toJson(src);
 		try {
-			response.setCharacterEncoding("utf-8");
+			response.setContentType("text/json;charset=utf-8");
 			response.getWriter().print(json);
 		} catch (IOException e) {
 			throw new RuntimeException("服务端异常");

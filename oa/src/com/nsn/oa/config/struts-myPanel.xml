@@ -4,7 +4,7 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	
-	<package name="/matter" namespace="/myPanel" extends="struts-default">
+	<package name="/matter" namespace="/myPanel" extends="new-struts-default">
 		<action name="matterAction_*" class="matterAction" method="{1}">
 			<result name="home">
 				/WEB-INF/jsp/myPanel/matter.jsp
@@ -21,7 +21,7 @@
 		</action>
 	</package>
 	
-	<package name="/personal" namespace="/myPanel" extends="struts-default">
+	<package name="/personal" namespace="/myPanel" extends="new-struts-default">
 		<action name="personalInfoAction_*" class="personalInfoAction" method="{1}">
 			<result name="home">
 				/WEB-INF/jsp/myPanel/personalInfo.jsp
